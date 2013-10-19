@@ -3,3 +3,4 @@
 \BOOKMARK [1][-]{section.3}{Marginalization Via Message Passing}{}
 \BOOKMARK [1][-]{section.4}{Decoding Via Message Passing}{}
 \BOOKMARK [2][-]{subsection.4.1}{Message Passing decoder for Binary Erasure Channel}{section.4}
+\BOOKMARK [2][-]{subsection.4.2}{Message Passing Decoder for Binary Input AWGN Channel}{section.4}
