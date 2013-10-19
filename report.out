@@ -1,0 +1,5 @@
+\BOOKMARK [1][-]{section.1}{Motivation}{}
+\BOOKMARK [1][-]{section.2}{LDPC Codes}{}
+\BOOKMARK [1][-]{section.3}{Marginalization Via Message Passing}{}
+\BOOKMARK [1][-]{section.4}{Decoding Via Message Passing}{}
+\BOOKMARK [2][-]{subsection.4.1}{Message Passing decoder for Binary Erasure Channel}{section.4}

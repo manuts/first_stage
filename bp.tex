@@ -1,0 +1,73 @@
+\section{Marginalization Via Message Passing}
+Consider a function $f$ with factorization:
+\begin{align}
+\ f(x_1,x_2,x_3,x_4,x_5,x_6)=f_1(x_1,x_2,x_3)f_2(x_1,x_4,x_6)f_3(x_4)f_4(x_4, x_5)
+\end{align}
+Now, the marginal of function $f$ w.r.t $x_1$ is:
+\begin{eqnarray}
+f(x_1) 	&=&\sum_{x_2, x_3, x_4, x_5, x_6} f(x_1,x_2,x_3,x_4,x_5,x_6) \\
+	&=&\left[\sum_{x_2, x_3} f_1(x_1, x_2, x_3)\right]\left[\sum_{x_4}f_3(x_4)\left(\sum_{x_6}f_2(x_1, x_4, x_6)\right)\left(\sum_{x_5}f_4(x_4, x_5)\right)\right]
+%f(x_1) &=&\sum_{x_2,x_4}f_1(x_1,x_2,x_4)\,\sum_{x_3,x_6}f_2(x_3,x_4,x_6)\,\sum_{x_5,x_7}f_3(x_4,x_5,x_7)
+\end{eqnarray}
+Factor graph associated with above factorization is given in Figure~\ref{fig:map0}. 
+\begin{figure}[htbp]
+\begin{center}
+\input{factor_graph}
+\end{center}
+\caption{Factor Graph \label{fig:map0}}
+\end{figure}
+Here the red circles represent the variables ($x_1,x_2,\cdots,x_6$) and are called the \textit{variable-nodes}. Blue circles represent the factor ($f_1$,$f_2$,$f_3$ and $f_4$) 
+and referred as the \textit{check-nodes}. In the factor graph, a variable-node is connected to a check-node iff the corresponding variable takes part in that factor.
+Notice that this factor graph is a tree (i.e. there is no cycle in the graph). In the case where the factor graph is a tree the marginalization problem can be broken into smaller
+tasks according to the structure of the tree. The algorithm is explained in the next paragraph
+
+The alogorithm proceeds by sending messages along the edges of the tree. Messages are functions on $\mathcal{X}$, or equivalently, vectors of length $\left|\mathcal{X}\right|$.
+The messages signify marginals of parts of the function and these parts are combined to form the marginal of the whole function. Message passing originates at the leaf nodes.
+Messages are passed up the tree and as soon as a node has received messages from all its children, the incoming messages are processed and the result is passed up to the parent node.
+Figure~\ref{fig:rules} explains the computation to be performed at the nodes during marginalization.
+
+\begin{figure}[htbp]
+\begin{center}
+\input{marginalization_rules}
+\end{center}
+\caption{Message Passing Rules \label{fig:rules}}
+\end{figure}
+To compute tha marginal with respect to all the variables, one can consider for each variable, a tree rooted in this variable and execute single marginal message passing algorithm 
+on each rooted tree. Here all the computations can be performed simultaneously on a single tree. Start at all leaf nodes and for every edge compute the outgoing message along this
+edge as soon as you have the incoming messages along all other edges that connect to a given node.
+\section{Decoding Via Message Passing}
+For memoryless channel without feedback, bitwise maximum a posteriori (MAP) decoding of a codeword is given by~\cite{mct}:  
+\begin{align}
+\hat x_i( y) &= \text{arg} \max_{x_i}p_{X_{i}|Y}(x_{i}| y) \label{eq:1}\\
+\ &= \text{arg} \max_{x_i}\sum_{\sim x_i}p_{X|Y}( x| y) \label{eq:2}\\
+\ &= \text{arg} \max_{x_i}\sum_{\sim x_i}p_{Y|X}( y| x)p_{X}( x) \label{eq:3}\\
+\ &= \text{arg} \max_{x_i}\sum_{\sim x_i}\prod_{j}p_{Y_j|X_j}(y_j|x_j)p_{X}( x)\label{eq:4}
+%\ &= \text{arg} \max_{x_i}\sum_{\sim x_i}\prod_{j}p_{Y_j/X_j}(y_j/x_j)\mathbf{1}_{x\in C}
+\end{align}
+The notation $\sum_{\sim x_i}$ indicates that sum is over all components of $x$, except $x_i$. 
+We obtain \eqref{eq:2} from \eqref{eq:1} by total probability rule. On application of Bayes's rule,
+we obtain \eqref{eq:3} from \eqref{eq:2}.
+Equation \eqref{eq:2} has very high computational complexity.
+For a codeword of length $n$ and rate $R$, approximate computational complexity is $\mathrm{O} (2^{nR})$. 
+The computational complexity can be reduced by factorizing the sequence probability. To this end, in equation\eqref{eq:4}, 
+we use the fact that the channel is memoryless, without feedback. Furthermore, since all the input codewords are equiprobable,
+\begin{align}
+\hat x_i(y) = \text{arg} \max_{x_i}\sum_{\sim x_i}\prod_{j}p_{Y_j|X_j}(y_j|x_j)\mathbf{1}_{\left\lbrace x\in C\right\rbrace} \label{eq:5}
+\end{align} 
+Where $\mathbf{1}_{\left\lbrace x\in C\right\rbrace}$ is a code membership function for the codebook $C$. Code membership function $\mathbf{1}_{\left\lbrace x\in C\right\rbrace}$
+has a factorized form, and this factorization is used in efficient decoding.
+
+\subsection{Message Passing decoder for Binary Erasure Channel}
+By the standard message-passing rules the initial messages are $(\mu_j(0), \mu_j(1)) = (p_{Y_j|X_j}(y_j|0),(p_{Y_j|X_j}(y_j|1))$. In the case of binary erasure channel, the messages are
+either $(1-\epsilon, 0), (\epsilon, \epsilon), \text{ or } (0, 1-\epsilon)$ corresponding to 0, ? (erasure), or 1 respectively received from channel output.
+In this case we can normalize the message to (1, 0), (1, 1) and (0, 1) correspondingly. Now the message processing rules are discussed. \\
+\textbf{Claim :} \\
+For BEC general message passing rules shown in Figure \ref{fig:rules} simplify to the following. At a variable node the outgoing message 
+is an erasure if all incoming messages are erasures. Otherwise, since the channel never introduces errors, all non-erasure messages must agree and either be 0 or 1. In this case
+the outgoing message is equal to this common value. At a check node the outgoing message is an erasure if anu of the incoming message is an erasure. Otherwise, if all the
+incoming messages are either 0 or 1, then the outgoing message is the mod-2 sum of the incoming messages \\
+\textbf{Proof :} \\
+If all messages entering a variable node are from the set $\left\lbrace(1, 0), (1, 1)\right\rbrace$, then the outgoing message, which is equal to the component-wise
+product of the incoming messages according to the general message-passing rules, is also from this set. Further, it is equal to (1, 1) only if all incoming messages are 
+of the form (1, 1) i.e, erasures. The equivalent statement is true if all incoming messages are from the set $\left\lbrace(1, 0), (1, 1)\right\rbrace$. Since channel never 
+introduces errors, we only need to consider these two cases.

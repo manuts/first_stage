@@ -1,0 +1,146 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{tikz}
+\usetikzlibrary{arrows, shapes, shadows, positioning}
+\usepackage{pgf-umlcd}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{caption}
+\usepackage{framed}
+\usepackage[margin=1in]{geometry}
+\DeclareMathOperator*{\argmax}{arg\,max}
+%opening
+\title{LDPC Codes, Construction and Applications}
+\author{Manu T S}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+In this report we study construction of LDPC codes and implementation of encoder and decoder for LDPC codes. We implement the progressive edge growth algorithm,
+algorith for construction of LDPC codes based on Reed-Solomon Codes. We also implement an encoder for LDPC codes. For decoder belief propogation decoder is 
+implemented.
+\end{abstract}
+
+\section{Motivation}
+\label{motivation}
+Coding Theory is one of the foundations of Communication Engineering.
+Search for better and better codes has always been an area of intense research.
+For a long time there was a significant gap between the theoretical capacity and practically achievable capacity.
+It is proved that LDPC codes introduced by Gallager, form a class of capacity approaching codes.
+The research in that area was dormant for a long time till they were rediscovered in the late 1990s\cite{kay}.
+It is shown that these codes decoded with iterative decoding algorithms like sum-product algorithm\cite{kay} or 
+message passing algorithms\cite{mct} achieve good error performance.
+
+GNU Radio provides a free and open-source platform for implementing practical communication systems 
+using various compatible hardware like USRP, and also provides a learning and simulation tool.
+The use of GNU Radio in research related to Software Defined Radio, Digital Signal Processing
+and Communication Engineering is becoming increasingly widespread.
+In this project we implement a generic encoder and decoder for LDPC codes in GNU Radio and
+also implement algorithms for construction of LDPC codes.
+
+\section{LDPC Codes}
+The LDPC codes, as the name suggests is characterized by a sparse parity check matrix \textbf{H}.
+From parity check matrix we can construct the \textit{Tanner graph} of the code. For example
+\cref{tanner_example} represents the Tanner graph of [7, 4, 3] Hamming code with
+\begin{equation}
+\label{H_matrix}
+ \textbf{H} = 
+ \left(
+\begin{array}{ccccccc}
+1 & 1 & 0 & 1 & 1 & 0 & 0  \\
+1 & 0 & 1 & 1 & 0 & 1 & 0  \\
+0 & 1 & 1 & 1 & 0 & 0 & 1 
+\end{array}
+\right)
+\end{equation}
+A codeword \textbf{x} from the codebook described by parity check matrix \textbf{H} should satisfy
+\begin{equation}
+\label{parity_check_equations}
+ \textbf{H}\textbf{x} = \textbf{0}
+\end{equation}
+In the Tanner graph of a $(t_c, t_r)$ regular binary LDPC code, each variable node will have degree $t_c$ 
+and each check node will have degree $t_r$. Irregular LDPC codes can have different degrees for nodes.
+Let $\lambda$ and $\rho$ be vectors such that their $i^{th}$ component $\lambda_i$ and $\rho_i$ represent the fraction of edges
+connecting to a variable node of degree $i$ and check node of degree $i$ respectively.
+Thus
+\begin{equation}\nonumber
+\lambda(x) = \displaystyle \sum_i \lambda_ix^{i-1} \hspace{8pt}\text{and}\hspace{8pt} \rho(x) = \displaystyle \sum_i \rho_ix^{i-1}
+\end{equation}
+are called variable and check degree distribution polynomials respectively.
+Standard ensemble LDPC$(n, \lambda, \rho)$ of bipartite graphs is defined as the set of bipartite graphs with
+$n$ variable nodes, variable degree distribution $\lambda(x)$ and check degree distribution $\rho(x)$.
+%===========================================================================================================================
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[var node/.style={scale = 0.8, circle,fill=blue!20,draw,font=\sffamily\Large\bfseries}, fun node/.style={scale = 0.8, circle,fill=yellow!20,draw,font=\sffamily\Large\bfseries}]
+  \node[var node] (x7) at (0, 0) {$x_7$};
+  \node[var node] (x6) at (0, -1) {$x_6$};
+  \node[var node] (x5) at (0, -2) {$x_5$};
+  \node[var node] (x4) at (0, -3) {$x_4$};
+  \node[var node] (x3) at (0, -4) {$x_3$};
+  \node[var node] (x2) at (0, -5) {$x_2$};
+  \node[var node] (x1) at (0, -6) {$x_1$};  
+  \node[fun node] (f3) at (4, 0) {$f_3$};
+  \node[fun node] (f2) at (4, -3) {$f_2$};
+  \node[fun node] (f1) at (4, -6) {$f_1$};
+  \draw[thick,draw=gray!100] (x1) -- node [below = 6pt] {(a)} (f1);
+  \draw[thick,draw=gray!100] (x2) --  (f1);
+  \draw[thick,draw=gray!100] (x4) --  (f1);
+  \draw[thick,draw=gray!100] (x5) --  (f1);
+  \draw[thick,draw=gray!100] (x1) --  (f2);
+  \draw[thick,draw=gray!100] (x3) --  (f2);
+  \draw[thick,draw=gray!100] (x4) --  (f2);
+  \draw[thick,draw=gray!100] (x6) --  (f2);
+  \draw[thick,draw=gray!100] (x3) --  (f3);
+  \draw[thick,draw=gray!100] (x2) --  (f3);
+  \draw[thick,draw=gray!100] (x4) --  (f3);
+  \draw[thick,draw=gray!100] (x7) --  (f3);
+\end{tikzpicture}
+\caption{\scriptsize{Tanner graph of [7, 4, 3] Hamming code with \textbf{H} given in \cref{H_matrix}.
+The blue nodes on the left represents the components of a codeword. They are called variable nodes.
+The yellow nodes on the right represents each of the constraints in the system \cref{parity_check_equations}. They are called
+check nodes. When $h_{i,j}$ is 1 there exists a link between $j^{th}$ variable node and $i^{th}$ check node.
+}} 
+\label{tanner_example}
+\end{center}
+\end{figure}
+
+\section{Decoding Via Message Passing}
+Assume we transmit over a binary-input memoryless channel using an LDPC code $\mathbf{C\left(H\right)}$ defined by its pariy matrix
+$\mathbf{H}$. and assume that the codewords are chosen uniformly at random. The rule for bit-wise MAP decoding is as follows:
+\begin{eqnarray}
+ \hat{x}_i(y)  &=& \argmax_{x_i\in\left\lbrace\right\rbrace} 
+\end{eqnarray}
+
+%===========================================================================================================================
+
+\begin{thebibliography}{9}
+
+\bibitem{mct} T. Richardson and R. Urbanke, ``Modern Coding Theory'', Cambridge 2003.
+
+\bibitem{rs_ldpc} I. Djurdjevic,  Jun Xu, K. Abdel-Ghaffar and Shu Lin, 
+``A class of low-density parity-check codes constructed based on Reed-Solomon codes with two information symbols'',
+IEEE Communication Letters, July 2003.
+
+\bibitem{irrldpc} T. Richardson, M Amin Shokrollahi and R. Urbanke,``Design of Capacity Approaching Irregular 
+Low-Density Parity-Check Codes'', Transactions On Information Theory, February 2001.
+
+\bibitem{peg} Xiao-Yu Hu, Evangelos Eleftheriou and Dieter M. Arnold, ''Regular and Irregular Progressive Edge-Growth
+Tanner Graphs'', Transactions on Information Theory, January 2005.
+
+\bibitem{mask} Jun Xu, Lei Chen, I. Djurdjevic, Shu Lin and K. Abdel-Ghaffar, ``Construction of Regular and Irregular
+LDPC codes: Geometry Decomposition and Masking'', Transactions on Information Theory, January 2007.
+
+\bibitem{kay} David J. C. MacKay, ``Good Error-Correcting Codes Based on Very Sparse Matrices'', Transactions on Information
+Theory, March 1999.
+
+\bibitem{blahut} Richard E. Blahut, ``Algebraic Codes for Data Transmission'', Cambridge University Press 2003.
+
+\bibitem{sloane} F.J. MacWilliams and N.J.A. Sloane. ``Theory of Error-Correcting Codes'', North-Holland Publishing Company 1977. 
+\end{thebibliography}
+
+\end{document}
