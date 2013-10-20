@@ -4,3 +4,10 @@
 \BOOKMARK [1][-]{section.4}{Decoding Via Message Passing}{}
 \BOOKMARK [2][-]{subsection.4.1}{Message Passing decoder for Binary Erasure Channel}{section.4}
 \BOOKMARK [2][-]{subsection.4.2}{Message Passing Decoder for Binary Input AWGN Channel}{section.4}
+\BOOKMARK [1][-]{section.5}{Construction of the parity check matrix using Reed-Solomon code}{}
+\BOOKMARK [2][-]{subsection.5.1}{Reed-Solomon codes}{section.5}
+\BOOKMARK [2][-]{subsection.5.2}{Properties of Cb}{section.5}
+\BOOKMARK [2][-]{subsection.5.3}{Construction}{section.5}
+\BOOKMARK [1][-]{section.6}{Construction of Parity Check Matrix using Progressive Edge Growth}{}
+\BOOKMARK [1][-]{section.7}{Encoding}{}
+\BOOKMARK [1][-]{section.8}{Outcomes and Results}{}

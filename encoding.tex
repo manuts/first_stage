@@ -1,0 +1,117 @@
+ \section{Encoding}
+ If the parity check matrix is given as $\mathbf{\left[{I \; P}\right]}$, where $\mathbf{I}$ is $N - K$ x $N - K$ identity matrix, $\mathbf{P}$ is some $N - K$ x $K$ matrix,
+   a codeword $\mathbf{x = \left[x_p^{\mathsf{T}} \; x_d^{\mathsf{T}}\right]^{\mathsf{T}}}$ can be formed by assigning
+    \begin{equation}\nonumber
+    \mathbf{x_p = P \cdot x_d}
+    \end{equation}
+   We obtain $\mathbf{G = \left[{I \; P}\right]}$ from $\mathbf{H}$ by Column permutation, Row additions and Row permutations
+   Suppose $f$ represents the permutation in obtaining $\mathbf{G}$ from $\mathbf{H}$, and $\mathbf{G \cdot x = 0}$, then $\mathbf{H} \cdot f(\mathbf{x}) = \mathbf{0}$
+      \begin{figure}[!htbp]
+      \centering
+    \begin{tikzpicture}
+    \begin{scope}
+      \foreach \c/\i [count=\n] in  
+        {blue!20/$x_0$,blue!20/$x_1$,blue!20/$x_2$,red!20/$x_3$,red!20/$x_4$,red!20/$x_5$,red!20/$x_6$} 
+           \node[draw,fill=\c,minimum height=0.75cm,minimum width = 1cm,xshift=\n*1cm](N\n){\i} ;
+	    \draw [decoration={brace,raise=3pt},decorate] (N1.north west) --  node[above=10pt]{$\mathbf{x_p}$}(N3.north east); 
+	    \draw [decoration={brace,raise=3pt},decorate] (N3.north east) --  node[above=10pt]{$\mathbf{x_d}$}(N7.north east);
+	    \node[right of N1] {$\mathbf{x}$};
+	    \coordinate (x0) at (1cm,-0.375cm);
+	    \coordinate (x1) at (2cm,-0.375cm);
+	    \coordinate (x2) at (3cm,-0.375cm);
+	    \coordinate (x3) at (4cm,-0.375cm);
+	    \coordinate (x4) at (5cm,-0.375cm);
+	    \coordinate (x5) at (6cm,-0.375cm);
+	    \coordinate (x6) at (7cm,-0.375cm);
+	    \end{scope}
+    \begin{scope}[yshift = -2cm]
+      \foreach \c/\i [count=\n] in  
+        {yellow!20/2,yellow!20/0,yellow!20/3,yellow!20/1,yellow!20/5,yellow!20/4,yellow!20/6} 
+           \node[draw,fill=\c,minimum height=0.75cm,minimum width = 1cm,xshift=\n*1cm](N\n){\i} ;
+           \node[right of N1] {$f$};
+           \coordinate (p0a) at (1cm, +0.375cm);
+           \coordinate (p0b) at (1cm, -0.375cm);
+           \coordinate (p1a) at (2cm, +0.375cm);
+           \coordinate (p1b) at (2cm, -0.375cm);
+           \coordinate (p2a) at (3cm, +0.375cm);
+           \coordinate (p2b) at (3cm, -0.375cm);
+           \coordinate (p3a) at (4cm, +0.375cm);
+           \coordinate (p3b) at (4cm, -0.375cm);
+           \coordinate (p4a) at (5cm, +0.375cm);
+           \coordinate (p4b) at (5cm, -0.375cm);
+           \coordinate (p5a) at (6cm, +0.375cm);
+           \coordinate (p5b) at (6cm, -0.375cm);
+           \coordinate (p6a) at (7cm, +0.375cm);
+           \coordinate (p6b) at (7cm, -0.375cm);
+	    \end{scope}	    
+    \begin{scope}[yshift = -4cm]
+      \foreach \c/\i [count=\n] in  
+        {blue!20/$x_1$,red!20/$x_3$,blue!20/$x_0$,blue!20/$x_2$,red!20/$x_5$,red!20/$x_4$,red!20/$x_6$} 
+           \node[draw,fill=\c,minimum height=0.75cm,minimum width = 1cm,xshift=\n*1cm](N\n){\i} ;
+            \node[right of N1] {$f\left(\mathbf{x}\right)$};
+	    \coordinate (y0) at (3cm,+0.375cm);
+	    \coordinate (y1) at (1cm,+0.375cm);
+	    \coordinate (y2) at (4cm,+0.375cm);
+	    \coordinate (y3) at (2cm,+0.375cm);
+	    \coordinate (y4) at (6cm,+0.375cm);
+	    \coordinate (y5) at (5cm,+0.375cm);
+	    \coordinate (y6) at (7cm,+0.375cm);
+	    \end{scope}	 
+    \draw [->, thin, gray] (x0) -- (p0a);
+    \draw [->, thin, gray] (p0b) -- (y0);
+    \draw [->, thin, gray] (x1) -- (p1a);
+    \draw [->, thin, gray] (p1b) -- (y1);
+    \draw [->, thin, gray] (x2) -- (p2a);
+    \draw [->, thin, gray] (p2b) -- (y2);
+    \draw [->, thin, gray] (x3) -- (p3a);
+    \draw [->, thin, gray] (p3b) -- (y3);
+    \draw [->, thin, gray] (x4) -- (p4a);
+    \draw [->, thin, gray] (p4b) -- (y4);
+    \draw [->, thin, gray] (x5) -- (p5a);
+    \draw [->, thin, gray] (p5b) -- (y5);
+    \draw [->, thin, gray] (x6) -- (p6a);
+    \draw [->, thin, gray] (p6b) -- (y6);
+    \end{tikzpicture}
+   \end{figure}
+
+
+\begin{algorithm}[H]
+\caption{Construction of $\mathbf{G = \left[{I \; P}\right]}$}
+\label{encode_algo}
+%\algsetup{indent=2em}
+\begin{algorithmic}
+\State \textbf{Input:} Parity Check matrix $\mathbf{H}$
+\State \textbf{Output:} $\mathbf{G = \left[{I \; P}\right]}$
+\State $nchk$ $\gets$ Number of rows of $\mathbf{H}$
+\State $nvar$ $\gets$ Number of columns of $\mathbf{H}$
+\State $limit$ $\gets$ Number of rows of $\mathbf{H}$
+\State $rank$ $\gets$ 0
+\State $i \gets$ 0
+\State $f \gets (1, 2, 3, \dots, nvar)$
+\While {$i < limit$} \Comment{Pivoting at (i, i)}
+  \State $found \gets$ False \Comment{Flag indicating if the row contains non-zero entry}
+  \For{$j$ from $i$ to $nvar$}
+  \If{$\mathbf{H}[i, j] = 1$} \Comment{Encountering a non-zero entry at $(i, j)$}
+  \State $found \gets $ True
+  \State $rank \gets rank + 1$ \Comment{Increment rank}
+  \State swap columns $i$ and $j$ \Comment{Now the entry at $(i, i)$ is 1}
+  \State swap $f(i)$ and $f(j)$ \Comment{Keeping track of the column permutation}
+  \State break
+  \EndIf
+  \EndFor
+  \If{$found = $ true}
+  \For {$k$ from $i$ to $nchk$}
+  \If {$\mathbf{H}[k, i] = 1$} \Comment{Checking for non-zero entries below $(i, i)$}
+  \State Add row $i^{th}$ row to $k^{th}$ row
+  \EndIf
+  \EndFor
+  \EndIf
+  \If{$found = $ false} \Comment{We encounter a row with all zeros}
+  \For {$rows$ in $i$ to $limit$}
+  \State swap row $rows$ with $rows + 1$ \Comment{Pushing the all-zero row to the bottom}
+  \EndFor
+  \State $limit \gets limit - 1$
+  \EndIf
+\EndWhile
+\end{algorithmic}
+\end{algorithm}

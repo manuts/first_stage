@@ -22,7 +22,5 @@ Theory, March 1999.
 
 \bibitem{sloane} F.J. MacWilliams and N.J.A. Sloane. ``Theory of Error-Correcting Codes'', North-Holland Publishing Company 1977. 
 
-\bibitem{alist} \url{http://www.inference.phy.cam.ac.uk/mackay/codes/alist.html}
-
-\bibitem{gr-ldpc} \url{https://github.com/manuts/gr-ldpc}
+\bibitem{alist}
 \end{thebibliography}

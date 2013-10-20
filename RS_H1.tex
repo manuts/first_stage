@@ -1,0 +1,68 @@
+\section{Construction of the parity check matrix using Reed-Solomon code}\label{chap:"RS"}
+
+The parity check matrix of a LDPC code is a sparse matrix. Ideally the Bipartite graph constructed using the  parity check matrix should not contain a 
+cycle (no feedback) for optimal decoding. However, in practice it is hard to generate parity check matrices without cycles. Nevertheless most well 
+defined methods for generating LDPC codes try to avoid cycles of length less than some minimum length (
+minimum length could be any of the even positive integer like $6$, $8$, $10$, etc.). In this chapter we will discuss LDPC code construction based on 
+Reed-Solomon codes\cite{IEEE1}, also known as RS-LDPC codes. The bipartite graph for these codes does not have cycle of length 4. 
+A $(6,32)$ regular $(2048,1723)$ RS-LDPC code has been adopted as the FEC in the IEEE $802.3$an $10$GBase-T standard\cite{IEEE}. 
+
+\subsection{Reed-Solomon codes} 
+
+Consider the Galois field $GF(q)$ with $q$ elements, where $q$ is a positive integer power of a prime number. Let $\rho$ be a positive integer 
+such that $2 \leq \rho $<$ q$. The generator polynomial of cyclic $(n,k,d_{min})$ code $C$ is given by:
+\begin{align}
+\ g(X)&= (X-\alpha)(X-\alpha^2)\cdot\cdot\cdot(X-\alpha^{\rho-2})\\
+\ &= g_0+g_1X+\cdot\cdot\cdot+X^{\rho-2}
+\end{align} 
+
+Notice that $n=q-1$, $k=q-\rho+1$, $g_i\in GF(q)$ and $\alpha$ is a primitive element of a field. The parity check matrix $R_H$ for a 
+Reed-Solomon code has size  $(\rho -2) \times n$. Any submatrix of size $(\rho -2)\times(\rho -2)$ of parity check matrix is the Vandermonde matrix. 
+Therefore linear combination of any $(\rho -2)$ column will not result in $0_v$. The rank of matrix $R_H$ can be utmost $(\rho -2)$. Thus minimum distance is $d_{min}=(\rho -1)$. 
+
+Now consider the $(q-1)$-tuple vector $g^{(0)}=(g_0,g_1,...,g_{\rho-2},0,0,...,0)$. Notice that $g_{\rho-2}=1$. By cyclically shifting $g^{(0)}$, we get generator 
+matrix $G$ of size $k\times n$ for code $C$.
+\[ G= \left( \begin{array}{cccccccccc}
+g_0 & g_1 & g_2 & . & . & 1 & 0 & . & . & 0\\
+0 & g_0 & g_1 & g_2 & . & . & 1 & .0 & . & . \\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots\\
+0 & . & . & g_0 & g_1 & g_2 & . & . & . & 1 \end{array} \right)\] 
+
+The generator matrix for shortened RS code $C_b$ is a submatrix of size $2 \times \rho$ and it is shown below:
+\begin{align*}
+ G_b= \begin{pmatrix}
+g_0 & g_1 & g_2 & . & . & . & 1 & 0\\
+0 & g_0 & g_1 & g_2 & . & . & . &1 \end{pmatrix}
+\end{align*} 
+
+\subsection{Properties of $C_b$} 
+\begin{enumerate}
+\item Since the length of codewords in $C_b$ is $\rho$ and the minimum distance between two codewords of $C_b$ is $(\rho-1)$, two codewords in $C_b$ only agree at most at one location.
+\item Let $c$ be a codeword of weight $\rho$. If we multiply $c$ by $\forall \beta \in GF(q)$, we get set $C_b^{(1)}$ of $(q-1)$ codewords of weight $\rho$. 
+    Now, length of every codeword of $C_b^{(1)}$ is also $\rho$. So $C_b^{(1)}$ is a MDS (Maximum Distance Separable) code.
+\item Let us partition $C_b$ into a $q$ cosets $C_b^{(1)},C_b^{(2)},...,C_b^{(q)}$ based on $C_b^{(1)}$. Notice that $C_b^{(i)}$ is MDS code. 
+    Therefore two codewords in any coset $C_b^{(i)}$ must differ in all the locations. 
+\end{enumerate}
+
+\subsection{Construction}
+Let us now explain the explicit construction procedure for a LDPC code check matrix $H$.
+\begin{enumerate}
+\item All $q$ elements of $GF(q)$ can be expressed as some power of a primitive element $\alpha$. Let us define the location vector of $\alpha^i$ as a $q$-tuple over $GF(2)$, $$z(\alpha^i)=(0,0,...,1,0,...,0)$$, where $i^{th}$ element of $z(\alpha^i)$ is $1$ and all other elements are $0$. Choose one codeword $b=(b_1,b_2,...,b_{\rho}) \in C_b^{(i)}$. If we replace each $b_i$ ($1 \leq i \leq \rho $) by its location vector $z(b_i)$, we get a $z(b)=(z(b_1),z(b_2),...,z(b_{\rho}))$, which is a $ \rho q$-tuple of weight $\rho$ over $GF(2)$.
+\item Arrange all $q$ $\rho q$-tuple of $C_b^{(i)}$ as rows of a matrix and call this matrix as $A_i$. The weight of each column of $A_i$ is $1$. 
+\item Choose a positive integer $\gamma$, such that $1 \leq \gamma \leq q$. Then the parity check matrix $H$ of size $\gamma q \times \rho q$ is defined as:
+\begin{align}
+ H \overset{\triangle}{=}  \begin{bmatrix}
+A_1\\
+A_2\\
+\vdots\\
+A_{\gamma} \end{bmatrix} 
+\end{align}
+\end{enumerate}
+Since each column of $A_i$ has weight $1$, weight of an each column of $H$ is $\gamma$. So, $H$ is a $(\gamma , \rho)$-regular matrix. Each row in $A_i$ is a coset member, so each row in $A_i$ is different,
+\begin{enumerate}
+\item Two rows in $A_i$ do not have single common element, 
+\item Two codewords in $C_b$ agree at at most one symbol location ($d_{min}=\rho-1$). 
+\end{enumerate}
+From Property~$1$ and $2$ above, no two rows from $A_i,~A_j,~i\neq j$ agree at more than a single element. This will imply that the bipartite graph corresponding to $H$ is free of length 4 cycles. To see this, notice that our construction guarantees a $H$ which contains no rectangle having all the corner points non-zero. 
+
+In this chapter we have shown the construction of a ($\gamma,\rho$) regular RS-LDPC. This code has girth at least six. In the next chapter we show the construction of an irregular LDPC code.

@@ -1,0 +1,42 @@
+\section{Construction of Parity Check Matrix using Progressive Edge Growth}
+In this section, we present progressive edge growth (PEG) method for the construction of regular and irregular LDPC code. 
+A bipartite graph can be described using bit nodes, check nodes and set of edges $E$. In this method, edges between bit nodes and check nodes are 
+established in a progressive manner. For given bit node, an edge connects the one of the check node such that girth is maximum. 
+Thus, PEG algorithm has large girth when compared to codes constructed using random methods. 
+Hence, code constructed using PEG algorithm has low error floor in comparison with code constructed using random methods.
+
+Let us describe bit node degree sequence as follow:
+\begin{equation*}
+ D_b=\{{d_b}_1,{d_b}_2,\cdots,{d_b}_n\},~ {d_b}_1 \leq {d_b}_2 \leq \cdots \leq {d_b}_n
+\end{equation*}
+%
+Where ${d_b}_i$ presents the degree of $i^{th}$ bit node.
+
+\begin{algorithm}[H]
+\caption{Progressive Edge Growth Algorithm\cite{peg}}
+\label{peg_algo}
+%\algsetup{indent=2em}
+\begin{algorithmic}[1]
+\State \textbf{Input:} sequence $D_b$
+\State \textbf{Output:} parity check matrix $H$
+\State initialize all check nodes with degree $0$
+\For{$i=1$ to $n$}
+\For{$j=1$ to ${d_b}_i$}
+\If{$j=1$}
+\State $1.~$find minimum degree check nodes set $C=\{c_1,c_2,\cdots,c_m\},~ 1 \leq m\leq n-k$ such that $deg(c_1)=deg(c_2)=\cdots=deg(c_m)$
+\State $2.~$choose check node $c_1 \in C$
+\State $3.~$put an edge between $i^{th}$ bit node and check node $c_1$
+\State $4.~$increase the degree of $c_1$ by 1
+\Else
+\State $1.~$for $i^{th}$ bit node find check nodes set $C=\{c_1,c_2,\cdots,c_m\},~1\leq m\leq n-k$ such that girth is maximum and $deg(c_1) \leq deg(c_2) \leq \cdots \leq deg(c_m)$
+\State $2.~$put an edge between $i^{th}$ bit node and check node $c_1$ 
+\State $3.~$increase the degree of $c_1$ by 1
+\EndIf
+\EndFor
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+%
+Check node degree distribution obtained using Algorithm \ref{peg_algo} is almost uniform. Whenever multiple choices are available to 
+pick check node from set $C$, we can either pick first check node in the set $C$ or pick any check node from set $C$. 
+In algorithm \ref{peg_algo}, we always choose the first member of set $C$.

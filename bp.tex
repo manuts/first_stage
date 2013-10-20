@@ -10,7 +10,7 @@ f(x_1) 	&=&\sum_{x_2, x_3, x_4, x_5, x_6} f(x_1,x_2,x_3,x_4,x_5,x_6) \\
 %f(x_1) &=&\sum_{x_2,x_4}f_1(x_1,x_2,x_4)\,\sum_{x_3,x_6}f_2(x_3,x_4,x_6)\,\sum_{x_5,x_7}f_3(x_4,x_5,x_7)
 \end{eqnarray}
 Factor graph associated with above factorization is given in Figure~\ref{fig:map0}. 
-\begin{figure}[htbp]
+\begin{figure}[b]
 \begin{center}
 \input{factor_graph}
 \end{center}
@@ -26,7 +26,7 @@ The messages signify marginals of parts of the function and these parts are comb
 Messages are passed up the tree and as soon as a node has received messages from all its children, the incoming messages are processed and the result is passed up to the parent node.
 Figure~\ref{fig:rules} explains the computation to be performed at the nodes during marginalization.
 
-\begin{figure}[htbp]
+\begin{figure}[t]
 \begin{center}
 \input{marginalization_rules}
 \end{center}
@@ -83,8 +83,8 @@ If $(\mu_j(0), \mu_j(1)) = (1, 1), j \in \lbrace 1, 2\rbrace$, then after normal
 erasure. Also if both messages are known, then by explicite check, we can see that the output corresponds to mod-2 sum. Figure~\ref{fig:message_passing} shows an example
 of this decoder on (7, 4, 3) Hamming code with parity check matrix given in Equation\eqref{H_matrix}
 \input{message_passing}
-\subsection{Message Passing Decoder for Binary Input AWGN Channel}
 \input{awgn_channel}
+\subsection{Message Passing Decoder for Binary Input AWGN Channel}
 Given in Figure~\ref{fig:awgn_channel} is a mathematical model of AWGN channel.
 We think that the channel input $x_i \in \lbrace -1, +1\rbrace$.
 Here again a message can be thought of as a real-valued vector of length 2, $(\mu(-1), \mu(1))$. We initialize the message passing iterations by sending from 

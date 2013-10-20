@@ -3,16 +3,21 @@
 \usepackage{hyperref}
 \usepackage{cleveref}
 \usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathreplacing}
 \usetikzlibrary{arrows, shapes, shadows, positioning}
 \usepackage{pgf-umlcd}
 \usepackage{amsmath}
 \usepackage{textcomp}
 \usepackage{caption}
 \usepackage{framed}
-\usepackage[margin=1in]{geometry}
+%\usepackage{a4}
+\usepackage[margin=1.25in]{geometry}
 \DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\arctanh}{arc\,tanh}
 \usepackage{algorithm}
-\usepackage{algorithmic} 
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
 \usepackage{rotating}
 \usepackage{tikz}
 \usepackage{verbatim}
@@ -31,8 +36,11 @@
 \input{motivation}
 \input{ldpc_code}
 \input{bp}
+\input{RS_H1}
+\input{peg_description}
+\input{encoding}
+\input{results}
 \clearpage
 \input{bib}
-
 
 \end{document}
