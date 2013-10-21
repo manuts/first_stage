@@ -11,7 +11,7 @@
 \usepackage{textcomp}
 \usepackage{caption}
 \usepackage{framed}
-%\usepackage{a4}
+\usepackage{graphicx}
 \usepackage[margin=1.25in]{geometry}
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\arctanh}{arc\,tanh}
@@ -19,7 +19,7 @@
 \usepackage{algorithmicx}
 \usepackage{algpseudocode}
 \usepackage{rotating}
-\usepackage{tikz}
+\usepackage{url}
 \usepackage{verbatim}
 \usepackage[T1]{fontenc}
 

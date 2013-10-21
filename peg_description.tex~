@@ -26,7 +26,7 @@ Where ${d_x}_i$ presents the degree of $i^{th}$ variable node $x_i$.
 \If{$j=1$}
 \State Put an edge between $f_k$ and $x_i$ where $f_k$ the check node with smallest degree.
 \Else
-\State Expand the graph from $x_i$ up-to $l$ layers such that either the cardinality of $\mathcal{N}_{x_i}^l$ stops \\
+\State Expand the graph from $x_i$ upto $l$ layers such that either the cardinality of $\mathcal{N}_{x_i}^l$ stops \\
 \quad \quad \quad \quad \quad growing, or ${\bar{\mathcal{N}}_{x_i}^l} \ne \Phi$ and ${\bar{\mathcal{N}}_{x_i}^{l+1}} = \Phi$. Then add an edge between $f_k$ and $x_i$ where $f_k$ \\ 
 \quad \quad \quad \quad \quad is the node with minimum degree in ${\bar{\mathcal{N}}_{x_i}^l}$
 \EndIf

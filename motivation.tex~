@@ -9,7 +9,7 @@ It is shown that these codes decoded with iterative decoding algorithms like sum
 message passing algorithms\cite{mct} achieve good error performance.
 
 GNU Radio provides a free and open-source platform for implementing practical communication systems 
-using various compatible hardwares like USRP, and also provides a learning and simulation tool.
+using various compatible hardware like USRP, and also provides a learning and simulation tool.
 The use of GNU Radio in research related to Software Defined Radio, Digital Signal Processing
 and Communication Engineering is becoming increasingly widespread.
 In this project we implement a generic encoder and decoder for LDPC codes in GNU Radio and

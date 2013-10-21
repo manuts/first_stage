@@ -22,7 +22,7 @@ In the Tanner graph of a $(t_c, t_r)$ regular binary LDPC code, each variable no
 and each check node will have degree $t_r$. Irregular LDPC codes can have different degrees for nodes.
 Let $\lambda$ and $\rho$ be vectors such that their $i^{th}$ component $\lambda_i$ and $\rho_i$ represent the fraction of edges
 connecting to a variable node of degree $i$ and check node of degree $i$ respectively.
-Then
+Thus
 \begin{equation}\nonumber
 \lambda(x) = \displaystyle \sum_i \lambda_ix^{i-1} \hspace{8pt}\text{and}\hspace{8pt} \rho(x) = \displaystyle \sum_i \rho_ix^{i-1}
 \end{equation}

@@ -4,14 +4,10 @@
     \begin{equation}\nonumber
     \mathbf{x_p = P \cdot x_d}
     \end{equation}
-   We obtain $\mathbf{G = \left[{I \; P}\right]}$ from $\mathbf{H}$ by
-   \begin{itemize}
-    \item Column permutation
-    \item Row additions
-    \item Row permutations
-   \end{itemize}
+   We obtain $\mathbf{G = \left[{I \; P}\right]}$ from $\mathbf{H}$ by Column permutation, Row additions and Row permutations
    Suppose $f$ represents the permutation in obtaining $\mathbf{G}$ from $\mathbf{H}$, and $\mathbf{G \cdot x = 0}$, then $\mathbf{H} \cdot f(\mathbf{x}) = \mathbf{0}$
-      \begin{figure}[ht]
+      \begin{figure}[!htbp]
+      \centering
     \begin{tikzpicture}
     \begin{scope}
       \foreach \c/\i [count=\n] in  
@@ -79,8 +75,8 @@
    \end{figure}
 
 
-\begin{algorithm}[H]
-\caption{Encoding Algorithm}
+\begin{algorithm}
+\caption{Construction of $\mathbf{G = \left[{I \; P}\right]}$}
 \label{encode_algo}
 %\algsetup{indent=2em}
 \begin{algorithmic}
@@ -91,6 +87,7 @@
 \State $limit$ $\gets$ Number of rows of $\mathbf{H}$
 \State $rank$ $\gets$ 0
 \State $i \gets$ 0
+\State $f \gets (1, 2, 3, \dots, nvar)$
 \While {$i < limit$} \Comment{Pivoting at (i, i)}
   \State $found \gets$ False \Comment{Flag indicating if the row contains non-zero entry}
   \For{$j$ from $i$ to $nvar$}
@@ -98,6 +95,7 @@
   \State $found \gets $ True
   \State $rank \gets rank + 1$ \Comment{Increment rank}
   \State swap columns $i$ and $j$ \Comment{Now the entry at $(i, i)$ is 1}
+  \State swap $f(i)$ and $f(j)$ \Comment{Keeping track of the column permutation}
   \State break
   \EndIf
   \EndFor
@@ -108,23 +106,12 @@
   \EndIf
   \EndFor
   \EndIf
+  \If{$found = $ false} \Comment{We encounter a row with all zeros}
+  \For {$rows$ in $i$ to $limit$}
+  \State swap row $rows$ with $rows + 1$ \Comment{Pushing the all-zero row to the bottom}
+  \EndFor
+  \State $limit \gets limit - 1$
+  \EndIf
 \EndWhile
 \end{algorithmic}
 \end{algorithm}
-
-% \begin{algorithm}[H]
-%  \SetAlgoLined
-%  \KwData{this text}
-%  \KwResult{how to write algorithm with \LaTeX2e }
-%  initialization\;
-%  \While{not at end of this document}{
-%   read current\;
-%   \eIf{understand}{
-%    go to next section\;
-%    current section becomes this one\;
-%    }{
-%    go back to the beginning of current section\;
-%   }
-%  }
-%  \caption{How to write algorithms}
-% \end{algorithm}

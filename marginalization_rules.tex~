@@ -60,7 +60,7 @@
  \draw (-1, -2.3) node{$x_1$};
  \draw[color=red] (0, -2) node[vnode] (xk) {};
  \draw (0, -2.3) node{$x_k$};
- \draw[color=red] (1, -2) node[vnode] (xK) {};
+ \draw[color=red] (1, -2) node[cnode] (xK) {};
  \draw (1, -2.3) node{$x_K$};
  \path [line] (f) -- (x);
  \path [line] (x1) -- node[near start, left]{$\mu_1$} (f);

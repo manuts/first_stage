@@ -21,7 +21,7 @@ and referred as the \textit{check-nodes}. In the factor graph, a variable-node i
 Notice that this factor graph is a tree (i.e. there is no cycle in the graph). In the case where the factor graph is a tree the marginalization problem can be broken into smaller
 tasks according to the structure of the tree. The algorithm is explained in the next paragraph
 
-The algorithm proceeds by sending messages along the edges of the tree. Messages are functions on $\mathcal{X}$, or equivalently, vectors of length $\left|\mathcal{X}\right|$.
+The alogorithm proceeds by sending messages along the edges of the tree. Messages are functions on $\mathcal{X}$, or equivalently, vectors of length $\left|\mathcal{X}\right|$.
 The messages signify marginals of parts of the function and these parts are combined to form the marginal of the whole function. Message passing originates at the leaf nodes.
 Messages are passed up the tree and as soon as a node has received messages from all its children, the incoming messages are processed and the result is passed up to the parent node.
 Figure~\ref{fig:rules} explains the computation to be performed at the nodes during marginalization.
@@ -32,7 +32,7 @@ Figure~\ref{fig:rules} explains the computation to be performed at the nodes dur
 \end{center}
 \caption{Message Passing Rules \label{fig:rules}}
 \end{figure}
-To compute the marginal with respect to all the variables, one can consider for each variable, a tree rooted in this variable and execute single marginal message passing algorithm 
+To compute tha marginal with respect to all the variables, one can consider for each variable, a tree rooted in this variable and execute single marginal message passing algorithm 
 on each rooted tree. Here all the computations can be performed simultaneously on a single tree. Start at all leaf nodes and for every edge compute the outgoing message along this
 edge as soon as you have the incoming messages along all other edges that connect to a given node.
 \section{Decoding Via Message Passing}
@@ -64,7 +64,7 @@ In this case we can normalize the message to (1, 0), (1, 1) and (0, 1) correspon
 \quad \\
 \textbf{Claim :} For BEC general message passing rules shown in Figure \ref{fig:rules} simplify to the following. At a variable node the outgoing message 
 is an erasure if all incoming messages are erasures. Otherwise, since the channel never introduces errors, all non-erasure messages must agree and either be 0 or 1. In this case
-the outgoing message is equal to this common value. At a check node the outgoing message is an erasure if any of the incoming message is an erasure. Otherwise, if all the
+the outgoing message is equal to this common value. At a check node the outgoing message is an erasure if anu of the incoming message is an erasure. Otherwise, if all the
 incoming messages are either 0 or 1, then the outgoing message is the mod-2 sum of the incoming messages \\
 \quad \\
 \textbf{Proof :} If all messages entering a variable node are from the set $\left\lbrace(1, 0), (1, 1)\right\rbrace$, then the outgoing message, which is equal to the component-wise
@@ -80,7 +80,7 @@ message processing rules the outgoing message is
 		  &=& \left( \mu_1(0)\mu_2(0) + \mu_1(1)\mu_2(1), \mu_1(0)\mu_2(1) + \mu_1(1)\mu_2(0)\right)
 \end{eqnarray}
 If $(\mu_j(0), \mu_j(1)) = (1, 1), j \in \lbrace 1, 2\rbrace$, then after normalization, $(\mu(0), \mu(1)) = (1, 1)$. Thus if any of the input is an erasure then output is an
-erasure. Also if both messages are known, then by explicit check, we can see that the output corresponds to mod-2 sum. Figure~\ref{fig:message_passing} shows an example
+erasure. Also if both messages are known, then by explicite check, we can see that the output corresponds to mod-2 sum. Figure~\ref{fig:message_passing} shows an example
 of this decoder on (7, 4, 3) Hamming code with parity check matrix given in Equation\eqref{H_matrix}
 \input{message_passing}
 \input{awgn_channel}
@@ -92,7 +92,7 @@ $i^{th}$ variable node the vector $(p_{Y_i|X_i}(y_i|-1), p_{Y_i|X_i}(y_i|1))$. I
  \begin{equation*}
  l = \log \left(\dfrac{\mu(-1)}{\mu(1)}\right)
  \end{equation*}
-On using log-likelihood ratios, the message passing rules simplify to the following. At variable node, simply add the incoming messages and at a check node of degree $J + 1$,
+On using log-likelihood ratios, the message passing rules simplipy to the following. At variable node, simply add the incoming messages and at a check node of degree $J + 1$,
 use the following computation.
 \begin{equation}
  l = 2 \arctanh \left( \prod_{j=1}^J \tanh \left(l_j/2\right)\right) 
@@ -103,7 +103,7 @@ In the case of Binary Input AWGN Channel, we can initialize the message passing 
      &=& \log \left(\dfrac{p_{Y_i|X_i}(y_i|-1)}{p_{Y_i|X_i}(y_i|1)}\right) \\
      &=& \dfrac{-2y_i}{\sigma^2}
 \end{eqnarray}
-from variable nodes to the check nodes. Further computations are carried out as explained above.
+from variable nodes to the check nodes. Further computations are carried out as expained above.
 One iteration consists of message passing from variable nodes to check nodes, computations at the check nodes and 
 message passing from check nodes to variable nodes. After one such iteration, we find the probability ratios by the marginalization
 step shown in the Figure~\ref{fig:rules}. Based on the probability ratios, we estimate the codeword, by the following rule. If the probability ratio is greater than 0, we decode that bit

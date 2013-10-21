@@ -1,7 +1,7 @@
 \section{Construction of the parity check matrix}
 The parity check matrix of a LDPC code is a sparse matrix. Ideally the Bipartite graph constructed using the  parity check matrix should not contain a 
 cycle for optimal decoding. However, in practice it is hard to generate parity check matrices without cycles. Nevertheless, when constructing a parity check matrix
-for an LDPC code, we try to achieve a minimum girth. Explained in this section are two such methods, one using Reed-Solomon Codes and another using Progressive Edge Growth
+for an LDPC code, we try to achieve a minumum girth. Explained in this section are two such methods, one using Reed-Solomon Codes and another using Progressive Edge Growth
 algorithm.
 \subsection{Construction of LDPC Codes using Reed-Solomon code}
 
@@ -24,7 +24,7 @@ Notice that $n=q-1$, $k=q-\rho+1$, $g_i\in GF(q)$ and $\alpha$ is a primitive el
  \end{pmatrix}
  \end{equation}
  Now we shorten $\mathcal{C}$ by deleting the first $1 - \rho - 1$ information symbols from each codeword of $\mathcal{C}$. 
- We obtain a $(\rho, 2, \rho - 1)$ shortened RS code $\mathcal{C}_b$ with only 2 information symbols. The generator matrix of that is given by
+ We obtain a $(\rho, 2, \rho - 1)$ shortened RS code $\mathcal{C}_b$ with only 2 information symbols. The generator marix of that is given by
 \begin{equation}
  \mathbf{G}_b = 
  \begin{pmatrix}

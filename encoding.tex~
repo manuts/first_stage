@@ -4,8 +4,8 @@
     \begin{equation}\nonumber
     \mathbf{x_p = P \cdot x_d}
     \end{equation}
-   We obtain $\mathbf{G = \left[{I \; P}\right]}$ from $\mathbf{H}$ by Column permutation, Row additions and Row permutations. This algorithm is explained in
-   Algorithm~\ref{encode_algo}.
+   We obtain $\mathbf{G = \left[{I \; P}\right]}$ from $\mathbf{H}$ by Column permutation, Row additions and Row permutations. The algorithm is explained in
+   Algorithm~\ref{encode_algo}
    Suppose $f$ represents the permutation in obtaining $\mathbf{G}$ from $\mathbf{H}$, and $\mathbf{G \cdot x = 0}$, then $\mathbf{H} \cdot f(\mathbf{x}) = \mathbf{0}$
    This is explained in Figure~\ref{fig:encoding}.
       \begin{figure}[!htbp]
