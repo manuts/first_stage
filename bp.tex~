@@ -57,7 +57,6 @@ we use the fact that the channel is memoryless, without feedback. Furthermore, s
 \end{align} 
 Where $\mathbf{1}_{\left\lbrace x\in C\right\rbrace}$ is a code membership function for the codebook $C$. Code membership function $\mathbf{1}_{\left\lbrace x\in C\right\rbrace}$
 has a factorized form, and this factorization is used in efficient decoding.
-\input{decoding}
 \subsection{Message Passing decoder for Binary Erasure Channel}
 By the standard message-passing rules the initial messages are $(\mu_j(0), \mu_j(1)) = (p_{Y_j|X_j}(y_j|0),(p_{Y_j|X_j}(y_j|1))$. In the case of binary erasure channel, the messages are
 either $(1-\epsilon, 0), (\epsilon, \epsilon), \text{ or } (0, 1-\epsilon)$ corresponding to 0, ? (erasure), or 1 respectively received from channel output.

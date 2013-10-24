@@ -1,0 +1,15 @@
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}{0.3\textwidth}
+    \includegraphics{factor_graph}
+    \caption{Message Passing}
+  \end{subfigure}
+  \begin{subfigure}{0.3\textwidth}
+    \includegraphics{factor_graph_step1}
+    \caption{Message Passing}
+  \end{subfigure}
+  \begin{subfigure}{0.3\textwidth}
+    \includegraphics{factor_graph_step2}
+    \caption{Message Passing}
+  \end{subfigure}
+\end{figure}

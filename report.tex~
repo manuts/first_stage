@@ -42,7 +42,6 @@
 \input{RS_H1}
 \input{peg_description}
 \input{encoding}
-\input{mac_channel}
 \input{results}
 \clearpage
 \input{bib}

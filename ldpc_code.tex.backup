@@ -41,12 +41,9 @@ $n$ variable nodes, variable degree distribution $\lambda(x)$ and check degree d
   \node[var node] (x2) at (0, -5) {$x_2$};
   \node[var node] (x1) at (0, -6) {$x_1$};  
   \node[fun node] (f3) at (4, 0) {$f_3$};
-  \draw node[right=0.2cm of f3]{$x_2 + x_3 + x_4 + x_7 = 0$};
   \node[fun node] (f2) at (4, -3) {$f_2$};
-  \draw node[right=0.2cm of f2]{$x_1 + x_3 + x_4 + x_6 = 0$};
   \node[fun node] (f1) at (4, -6) {$f_1$};
-  \draw node[right=0.2cm of f1]{$x_1 + x_2 + x_4 + x_2 = 0$};
-  \draw[thick,draw=gray!100] (x1) -- node [below = 6pt] {(a)} (f1);
+  \draw[thick,draw=gray!100] (x1) --  (f1);
   \draw[thick,draw=gray!100] (x2) --  (f1);
   \draw[thick,draw=gray!100] (x4) --  (f1);
   \draw[thick,draw=gray!100] (x5) --  (f1);
