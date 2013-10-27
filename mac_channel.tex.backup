@@ -10,10 +10,17 @@ dominant face $\mathcal{D}$ of the capacity region for the points on $\mathcal{D
 achievable by successive decoding. The other pointes are achieved through rate splitting or time sharing. Here we present joing decoding
 of the two users using belief propogation to achieve a general point on $\mathcal{D}$ without rate splitting or time sharing.
 To decode $x_i^{[i]}$, the $i^{th}$ bit of user 1, we have the following MAP decoding rule.
-\begin{equation}
- \hat{x}_i^{[1]} \overset{\Delta}{=} \text{arg} \max_{x_i}\sum_{\sim x_i^{[1]}}p_{X_i^{[1]}|Y}(x_i|y)
-\end{equation}
-
+ \begin{eqnarray}
+  \hat{x}_i^{[1]} 	&\overset{\Delta}{=}& \text{arg} \max_{x_i}p_{X_i^{[1]}|Y}(x_i^{[1]}|y) \label{eq:mac1} \\
+ 			&=& \text{arg} \max_{x_i}\sum_{\sim x_i^{[1]}} p_{X^{[1]}, X^{[2]}|Y} (x^{[1]}, x^{[2]}|y)  \label{eq:mac2}\\
+ 			&=& \text{arg} \max_{x_i}\sum_{\sim x_i^{[1]}} p_{Y|X^{[1]}, X^{[2]}} (y|x^{[1]}, x^{[2]}) p_{X^{[1]}, X^{[2]}}(x^{[1]}, x^{[2]}) \label{eq:mac3}\\
+ 			&=& \text{arg} \max_{x_i}\sum_{\sim x_i^{[1]}} p_{Y|X^{[1]}, X^{[2]}} (y|x^{[1]}, x^{[2]}) p_{X^{[1]}}(x^{[1]}) p_{X^{[2]}}(x^{[2]}) \label{eq:mac4}\\
+ 			&=& \text{arg} \max_{x_i}\sum_{\sim x_i^{[1]}} \prod_j p_{Y_j|X_j^{[1]}, X_j^{[2]}} (y_j|x_j^{[1]}, x_j^{[2]}) \mathbf{1}_{\lbrace x^{[1]} \in \mathcal{C}^{[1]}\rbrace} \mathbf{1}_{\lbrace x^{[2]} \in \mathcal{C}^{[2]}\rbrace} \label{eq:mac5}
+ \end{eqnarray}
+To obtain Equation~\ref{eq:mac2} from Equation~\ref{eq:mac1}, we use the marginal probability rule. We get Equation~\ref{eq:mac3} fron Equation~\ref{eq:mac2} we use
+the Bayes' rule. By applying the fact that the data from one user is independent of the data from the other user, we get Equation~\ref{eq:mac4}. Finally we use that
+fact that the channel is memoryless, and each codeword is equiprobable to obtain Equation~\ref{eq:mac5}. Figure~\ref{fig:2users_factor} represents the factor graph 
+for the marginalization shown in Equation~\ref{eq:mac5}.
  \begin{figure}[scale=1, !tp]
  \centering
   \begin{tikzpicture}
@@ -29,7 +36,6 @@ To decode $x_i^{[i]}$, the $i^{th}$ bit of user 1, we have the following MAP dec
 \caption{AWGN Multiple Access Channel}
 \label{fig:awgn_channel}
 \end{figure}
-
 
 \begin{figure}[scale=1, !tp]
  \centering
@@ -49,8 +55,10 @@ To decode $x_i^{[i]}$, the $i^{th}$ bit of user 1, we have the following MAP dec
 \caption{Capacity of AWGN Multiple Access Channel}
 \label{fig:awgn_channel_capacity}
 \end{figure}
+\input{2user_factor}
 
-\begin{figure}
- \centering
- \includegraphics[scale=1]{2user.pdf}
-\end{figure}
+The message passing rules at the variable nodes and the check nodes remain the same as given for AWGN channel. \cite{2user} suggests the following rule
+for the message passing at the function nodes. 
+\begin{equation}
+ \mu_{s_i \rightarrow x_i^{[2]}} = \log \left( \dfrac{\exp( \mu_{x_i^{[1]} \rightarrow s_i}) p(y|x_i^{[1]} = -1, x_i^{[2]} = -1) + p(y|x_i^{[1]} = 1, x_i^{[2]} = -1)}{\exp( \mu_{x_i^{[1]} \rightarrow s_i}) p(y|x_i^{[1]} = 1, x_i^{[2]} = -1) + p(y|x_i^{[1]} = -1, x_i^{[2]} = -1)} \right)
+\end{equation}

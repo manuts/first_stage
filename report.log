@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.10.24)  24 OCT 2013 21:34
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.10.24)  26 OCT 2013 10:12
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -1287,15 +1287,6 @@ l.53             \node[right of N1]
 (That was another \errmessage.)
 
 ) (./mac_channel.tex [10] [11]
-! Missing } inserted.
-<inserted text> 
-                }
-l.16 \end
-         {eqnarray}
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
 
 ! Package pgfkeys Error: I do not know the key '/tikz/latex' and I am going to 
 ignore it. Perhaps you misspelled it.
@@ -1304,7 +1295,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.22   \path [draw, latex] (
+l.28   \path [draw, latex] (
                             -3, -1) -- node[near start, below]{$X_i^{[2]}$} ...
 (That was another \errmessage.)
 
@@ -1316,7 +1307,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.23   \path [draw, latex] (
+l.29   \path [draw, latex] (
                             -3, 1) -- node[near start, below]{$X_i^{[1]}$} (...
 (That was another \errmessage.)
 
@@ -1328,7 +1319,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.40   \path [draw, latex] (
+l.45   \path [draw, latex] (
                             0, 4) -- (2, 4) ;
 (That was another \errmessage.)
 
@@ -1340,7 +1331,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.41   \path [draw, latex] (
+l.46   \path [draw, latex] (
                             4, 0) -- (4, 2) ;
 (That was another \errmessage.)
 
@@ -1352,36 +1343,30 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.42   \path [draw, latex] (
+l.47   \path [draw, latex] (
                             2, 4) -- (4, 2);
 (That was another \errmessage.)
 
-
-
-pdfTeX warning: /usr/bin/pdflatex (file ./2user.pdf): PDF inclusion: found PDF 
-version <1.5>, but at most version <1.4> allowed
-<2user.pdf, id=237, 414.12872pt x 166.3402pt>
-File: 2user.pdf Graphic file (type pdf)
- <use 2user.pdf>) (./results.tex
-[12pdfTeX warning (ext4): destination with the same identifier (name{equation.7
-.24}) has been already used, duplicate ignored
+(./2user_factor.tex)) (./results.tex [12pdfTeX warning (ext4): destination with
+ the same identifier (name{equation.7.24}) has been already used, duplicate ign
+ored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.5     \item C
-               lass for GF$\left(2\right)$ Vector arithmetic.]
-<ber_plot.pdf, id=251, 587.19376pt x 442.65375pt>
+l.1 \section
+            {Outcomes and Results}]
+<ber_plot.pdf, id=261, 587.19376pt x 442.65375pt>
 File: ber_plot.pdf Graphic file (type pdf)
  <use ber_plot.pdf>
-<ldpc.png, id=255, 1927.2pt x 1084.05pt>
+<ldpc.png, id=265, 1927.2pt x 1084.05pt>
 File: ldpc.png Graphic file (type png)
- <use ldpc.png>) [13 <./2user.pdf>]
-[14 <./ber_plot.pdf> <./ldpc.png (PNG copy)>] (./bib.tex
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 25.
+ <use ldpc.png>) [13] [14] [15 <./ber_plot.pdf>] [16 <./ldpc.png (PNG copy)>] (
+./bib.tex
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 27.
 
 (/usr/share/texmf-texlive/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)) [15
+)) [17
 
 ] (./report.aux)
 
@@ -1389,13 +1374,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 20331 strings out of 493848
- 387874 string characters out of 1152822
+ 20499 strings out of 493848
+ 390109 string characters out of 1152822
  543371 words of memory out of 3000000
- 23035 multiletter control sequences out of 15000+50000
+ 23197 multiletter control sequences out of 15000+50000
  24898 words of font info for 58 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 56i,10n,73p,662b,845s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 56i,10n,73p,662b,843s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{algorithm.2} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -1425,9 +1410,9 @@ f/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fonts/type1/public
 fb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf
 /fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/
 cm-super/sftt1000.pfb>
-Output written on report.pdf (15 pages, 787135 bytes).
+Output written on report.pdf (17 pages, 795303 bytes).
 PDF statistics:
- 426 PDF objects out of 1000 (max. 8388607)
- 88 named destinations out of 1000 (max. 500000)
- 255 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 443 PDF objects out of 1000 (max. 8388607)
+ 92 named destinations out of 1000 (max. 500000)
+ 250 words of extra memory for PDF output out of 10000 (max. 10000000)
 
