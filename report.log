@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.10.24)  26 OCT 2013 10:12
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.10.24)  28 OCT 2013 12:11
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -1347,21 +1347,25 @@ l.47   \path [draw, latex] (
                             2, 4) -- (4, 2);
 (That was another \errmessage.)
 
-(./2user_factor.tex)) (./results.tex [12pdfTeX warning (ext4): destination with
- the same identifier (name{equation.7.24}) has been already used, duplicate ign
-ored
+(./2user_factor.tex) [12pdfTeX warning (ext4): destination with the same identi
+fier (name{equation.7.24}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1 \section
-            {Outcomes and Results}]
-<ber_plot.pdf, id=261, 587.19376pt x 442.65375pt>
+l.67 
+     ]) (./results.tex [13pdfTeX warning (ext4): destination with the same iden
+tifier (name{equation.7.31}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.26 \end{table}
+                ] [14] <ber_plot.pdf, id=271, 587.19376pt x 442.65375pt>
 File: ber_plot.pdf Graphic file (type pdf)
- <use ber_plot.pdf>
-<ldpc.png, id=265, 1927.2pt x 1084.05pt>
+
+<use ber_plot.pdf> <ldpc.png, id=275, 1927.2pt x 1084.05pt>
 File: ldpc.png Graphic file (type png)
- <use ldpc.png>) [13] [14] [15 <./ber_plot.pdf>] [16 <./ldpc.png (PNG copy)>] (
-./bib.tex
+ <use ldpc.png>)
+[15] [16 <./ber_plot.pdf> <./ldpc.png (PNG copy)>] (./bib.tex
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 27.
 
 (/usr/share/texmf-texlive/tex/latex/base/t1cmtt.fd
@@ -1374,8 +1378,8 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 20499 strings out of 493848
- 390109 string characters out of 1152822
+ 20500 strings out of 493848
+ 390122 string characters out of 1152822
  543371 words of memory out of 3000000
  23197 multiletter control sequences out of 15000+50000
  24898 words of font info for 58 fonts, out of 3000000 for 9000
@@ -1410,9 +1414,9 @@ f/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fonts/type1/public
 fb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf
 /fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/
 cm-super/sftt1000.pfb>
-Output written on report.pdf (17 pages, 795303 bytes).
+Output written on report.pdf (17 pages, 797112 bytes).
 PDF statistics:
  443 PDF objects out of 1000 (max. 8388607)
- 92 named destinations out of 1000 (max. 500000)
+ 93 named destinations out of 1000 (max. 500000)
  250 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -59,6 +59,22 @@ for the marginalization shown in Equation~\ref{eq:mac5}.
 
 The message passing rules at the variable nodes and the check nodes remain the same as given for AWGN channel. \cite{2user} suggests the following rule
 for the message passing at the function nodes. 
+\begin{eqnarray}
+ \mu_{s_i \rightarrow x_i^{[2]}} &=& \log \left( \dfrac{\exp( \mu_{x_i^{[1]} \rightarrow s_i}) p(y|x_i^{[1]} = -1, x_i^{[2]} = -1) + p(y|x_i^{[1]} = 1, x_i^{[2]} = -1)}{\exp( \mu_{x_i^{[1]} \rightarrow s_i}) p(y|x_i^{[1]} = -1, x_i^{[2]} = 1) + p(y|x_i^{[1]} = 1, x_i^{[2]} = 1)} \right) \\
+ \mu_{s_i \rightarrow x_i^{[1]}} &=& \log \left( \dfrac{\exp( \mu_{x_i^{[2]} \rightarrow s_i}) p(y|x_i^{[1]} = -1, x_i^{[2]} = -1) + p(y|x_i^{[1]} = -1, x_i^{[2]} = 1)}{\exp( \mu_{x_i^{[2]} \rightarrow s_i}) p(y|x_i^{[1]} = 1, x_i^{[2]} = -1) + p(y|x_i^{[1]} = 1, x_i^{[2]} = 1)} \right)
+\end{eqnarray}
+The above rules have been verified in simulation. It is not clear at first hand why this rule works. Here we present a possible explanation.
+
+From the single user case, the the message incoming into the variable nodes from the channel is of the type, $\log \left( {p(y_i|x_i^{[k]} = -1)}/{p(y_i|x_i^{[k]} = 1)} \right)$.
+At the channel output we have the posterior probabilities $p(y_i|x_i^{[1]}, x_i^{[2]})$. Given below is the computation of likelihood for user 2 that is passed to the variable node.
+\begin{eqnarray}
+  \frac{p(y_i|x_i^{[2]} = -1)}{p(y_i|x_i^{[2]} = 1)} &=& \frac{p(y_i|x_i^{[1]}=-1, x_i^{[2]}=-1)p(x_i^{[1]}=-1|x_i^{[2]}) + p(y_i|x_i^{[1]}=1, x_i^{[2]}=-1)p(x_i^{[1]}=1|x_i^{[2]})}{p(y_i|x_i^{[1]}=-1, x_i^{[2]}=1)p(x_i^{[1]}=-1|x_i^{[2]}) + p(y_i|x_i^{[1]}=1, x_i^{[2]}=1)p(x_i^{[1]}=1|x_i^{[2]})}
+%&=& \frac{p(y_i|x_i^{[1]}=-1, x_i^{[2]}=-1)\dfrac{p(x_i^{[1]}=-1|x_i^{[2]})}{p(x_i^{[1]}=1|x_i^{[2]})} + p(y_i|x_i^{[1]}=1, x_i^{[2]}=-1)}{p(y_i|x_i^{[1]}=-1, x_i^{[2]}=1)\dfrac{p(x_i^{[1]}=-1|x_i^{[2]})}{p(x_i^{[1]}=1|x_i^{[2]})} + p(y_i|x_i^{[1]}=1, x_i^{[2]}=1)} \nonumber \\
+\end{eqnarray}
+
+This should be read as a ratio of marginal probabilities where $p(x_i^{[1]}|x_i^{[2]})$ acts as the weights of the conditional probabilities. To start with $x_i^{[1]}$ and $x_i^{[2]}$ 
+are independent. So we can use $p(x_i^{[1]})$ instead of $p(x_i^{[1]}|x_i^{[2]})$. After running an iteration of message passing on one user, the posterior probability $p(x_i^{[1]}|y)$
+changes and this should be used as the weights in the above equation. So we should update the above eqation as 
 \begin{equation}
- \mu_{s_i \rightarrow x_i^{[2]}} = \log \left( \dfrac{\exp( \mu_{x_i^{[1]} \rightarrow s_i}) p(y|x_i^{[1]} = -1, x_i^{[2]} = -1) + p(y|x_i^{[1]} = 1, x_i^{[2]} = -1)}{\exp( \mu_{x_i^{[1]} \rightarrow s_i}) p(y|x_i^{[1]} = 1, x_i^{[2]} = -1) + p(y|x_i^{[1]} = -1, x_i^{[2]} = -1)} \right)
+ \frac{p(y_i|x_i^{[2]} = -1)}{p(y_i|x_i^{[2]} = 1)} = \frac{p(y_i|x_i^{[1]}=-1, x_i^{[2]}=-1)p(x_i^{[1]}=-1|y}) + p(y_i|x_i^{[1]}=1, x_i^{[2]}=-1)p(x_i^{[1]}=1|y})}{p(y_i|x_i^{[1]}=-1, x_i^{[2]}=1)p(x_i^{[1]}=-1|x_i^{[2]}) + p(y_i|x_i^{[1]}=1, x_i^{[2]}=1)p(x_i^{[1]}=1|x_i^{[2]})} 
 \end{equation}

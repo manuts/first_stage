@@ -82,6 +82,6 @@ changes and this should be used as the weights in the above equation. So we shou
  By the message passing rules, $\mu_{x_i^{[1]} \rightarrow s_i}$ is the sum of the messages incident on $x_i^{[1]}$ from all the check nodes connected to $x_i^{[1]}$. Recall that we are
  operating in log-likelihood domain. So what we have is,
  \begin{eqnarray}
-  \mu_{x_i^{[1]} \rightarrow s_i} &=& \log \left(\dfrac{p(x_i^{[1]}=-1|y)}{p(x_i^{[1]}=1|y)} \right) \\
+  \mu_{x_i^{[1]} \rightarrow s_i} &=& \log \left(\dfrac{p(x_i^{[1]}=-1|y)}{p(x_i^{[1]}=1|y)} \right)
   \implies \dfrac{p(x_i^{[1]}=-1|y)}{p(x_i^{[1]}=1|y)} &=& \exp (\mu_{x_i^{[1]} \rightarrow s_i})
  \end{eqnarray}
