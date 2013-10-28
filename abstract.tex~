@@ -1,3 +1,0 @@
-\begin{abstract}
-In this report we study the construction of LDPC codes and implementation of a generic encoder and decoder for LDPC codes. We implement the progressive edge growth algorithm  and algorithm for construction of LDPC codes based on Reed-Solomon Codes. We also implement an encoder for LDPC codes. For decoder belief propagation decoder is  implemented. Further we implement a belief propogation decoder for 2-user Gaussian Multiple Access Channel.
-\end{abstract}
