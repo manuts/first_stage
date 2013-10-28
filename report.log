@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.10.24)  28 OCT 2013 12:11
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.10.12)  28 OCT 2013 17:04
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -1071,27 +1071,27 @@ LaTeX Warning: Label `fig:awgn_channel' multiply defined.
 )
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 33.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 33.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 35.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 35.
  (/usr/share/texmf-texlive/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 33.
-Package hyperref Info: Link coloring OFF on input line 33.
+LaTeX Font Info:    ... okay on input line 35.
+Package hyperref Info: Link coloring OFF on input line 35.
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
@@ -1101,16 +1101,16 @@ Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 \c@section@level=\count148
 )
-LaTeX Info: Redefining \ref on input line 33.
-LaTeX Info: Redefining \pageref on input line 33.
+LaTeX Info: Redefining \ref on input line 35.
+LaTeX Info: Redefining \pageref on input line 35.
  (./report.out)
 (./report.out)
 \@outlinefile=\write4
 \openout4 = `report.out'.
 
 \AtBeginShipoutBox=\box67
-LaTeX Info: Redefining \ref on input line 33.
-LaTeX Info: Redefining \ref on input line 33.
+LaTeX Info: Redefining \ref on input line 35.
+LaTeX Info: Redefining \ref on input line 35.
  ABD: EveryShipout initializing macros
 (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1186,34 +1186,34 @@ i-als re-spec-tively. Stan-dard en-sem-ble LDPC$\OT1/cmr/m/n/10 (\OML/cmm/m/it/
 
 (./factor_graph.tex) [2] (./marginalization_rules.tex)
 (./factor_graph_example.tex
-<factor_graph.pdf, id=119, 216.24739pt x 207.88968pt>
+<factor_graph.pdf, id=121, 216.24739pt x 207.88968pt>
 File: factor_graph.pdf Graphic file (type pdf)
  <use factor_graph.pdf>
-<factor_graph_step1.pdf, id=121, 216.24739pt x 207.88968pt>
+<factor_graph_step1.pdf, id=123, 216.24739pt x 207.88968pt>
 File: factor_graph_step1.pdf Graphic file (type pdf)
 
 <use factor_graph_step1.pdf>
-<factor_graph_step2.pdf, id=123, 216.24739pt x 207.88968pt>
+<factor_graph_step2.pdf, id=125, 216.24739pt x 207.88968pt>
 File: factor_graph_step2.pdf Graphic file (type pdf)
 
 <use factor_graph_step2.pdf>
-<factor_graph_step3.pdf, id=125, 216.24739pt x 207.88968pt>
+<factor_graph_step3.pdf, id=127, 216.24739pt x 207.88968pt>
 File: factor_graph_step3.pdf Graphic file (type pdf)
 
 <use factor_graph_step3.pdf>
-<factor_graph_step4.pdf, id=127, 216.24739pt x 207.88968pt>
+<factor_graph_step4.pdf, id=129, 216.24739pt x 207.88968pt>
 File: factor_graph_step4.pdf Graphic file (type pdf)
 
 <use factor_graph_step4.pdf>
-<factor_graph_step5.pdf, id=129, 216.24739pt x 207.88968pt>
+<factor_graph_step5.pdf, id=131, 216.24739pt x 207.88968pt>
 File: factor_graph_step5.pdf Graphic file (type pdf)
 
-<use factor_graph_step5.pdf>) (./decoding.tex [3]
-<factor_graph_channel.pdf, id=149, 414.12872pt x 166.3402pt>
+<use factor_graph_step5.pdf>) [3] (./decoding.tex
+<factor_graph_channel.pdf, id=151, 414.12872pt x 166.3402pt>
 File: factor_graph_channel.pdf Graphic file (type pdf)
 
 <use factor_graph_channel.pdf>)
-Overfull \hbox (7.45045pt too wide) in paragraph at lines 62--75
+Overfull \hbox (7.45045pt too wide) in paragraph at lines 64--77
 \T1/cmr/m/n/10 By the stan-dard message-passing rules the ini-tial mes-sages ar
 e $\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^V[]\OT1/cmr/m/n/10 (0)\OML/cmm/m/it/10 ;
  ^^V[]\OT1/cmr/m/n/10 (1)) = (\OML/cmm/m/it/10 p[]\OT1/cmr/m/n/10 (\OML/cmm/m/i
@@ -1223,19 +1223,19 @@ t/10 y[]\OMS/cmsy/m/n/10 j\OT1/cmr/m/n/10 0)\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 62--75
+Underfull \hbox (badness 10000) in paragraph at lines 64--77
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 62--75
+Underfull \hbox (badness 10000) in paragraph at lines 64--77
 
  []
 
 [4] [5 <./factor_graph.pdf> <./factor_graph_step1.pdf> <./factor_graph_step2.pd
 f> <./factor_graph_step3.pdf> <./factor_graph_step4.pdf> <./factor_graph_step5.
 pdf> <./factor_graph_channel.pdf>] (./message_passing.tex) (./awgn_channel.tex)
-) (./RS_H1.tex [6] [7] [8]) (./peg_description.tex
+[6] [7]) (./RS_H1.tex [8]) (./peg_description.tex
 Overfull \hbox (1.23758pt too wide) in paragraph at lines 2--12
 \T1/cmr/m/n/10 Let us de-note the vari-able nodes by $\OML/cmm/m/it/10 x[]; i \
 OMS/cmsy/m/n/10 2 f\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 2\OML/cm
@@ -1244,9 +1244,10 @@ es by $\OML/cmm/m/it/10 f[]; i \OMS/cmsy/m/n/10 2 f\OT1/cmr/m/n/10 1\OML/cmm/m/
 it/10 ; \OT1/cmr/m/n/10 2\OML/cmm/m/it/10 ; []  ; m\OMS/cmsy/m/n/10 g$
  []
 
+[9]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 17.
-[9]) (./encoding.tex
+) (./encoding.tex
 
 ! Package pgfkeys Error: I do not know the key '/tikz/right of N1' and I am goi
 ng to ignore it. Perhaps you misspelled it.
@@ -1352,20 +1353,20 @@ fier (name{equation.7.24}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.67 
-     ]) (./results.tex [13pdfTeX warning (ext4): destination with the same iden
-tifier (name{equation.7.31}) has been already used, duplicate ignored
+l.65 \end{eqnarray}
+                   ] [13] [14]) (./results.tex
+<ber_plot.pdf, id=274, 587.19376pt x 442.65375pt>
+File: ber_plot.pdf Graphic file (type pdf)
+ <use ber_plot.pdf>
+<ldpc.png, id=278, 1927.2pt x 1084.05pt>
+File: ldpc.png Graphic file (type png)
+ <use ldpc.png>) [15pdfTeX warning (ext4): destination with the same identifier
+ (name{equation.7.31}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.26 \end{table}
-                ] [14] <ber_plot.pdf, id=271, 587.19376pt x 442.65375pt>
-File: ber_plot.pdf Graphic file (type pdf)
-
-<use ber_plot.pdf> <ldpc.png, id=275, 1927.2pt x 1084.05pt>
-File: ldpc.png Graphic file (type png)
- <use ldpc.png>)
-[15] [16 <./ber_plot.pdf> <./ldpc.png (PNG copy)>] (./bib.tex
+l.49 \clearpage
+               ] [16 <./ber_plot.pdf> <./ldpc.png (PNG copy)>] (./bib.tex
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 27.
 
 (/usr/share/texmf-texlive/tex/latex/base/t1cmtt.fd
@@ -1378,10 +1379,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 20500 strings out of 493848
- 390122 string characters out of 1152822
+ 20504 strings out of 493848
+ 390187 string characters out of 1152822
  543371 words of memory out of 3000000
- 23197 multiletter control sequences out of 15000+50000
+ 23201 multiletter control sequences out of 15000+50000
  24898 words of font info for 58 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  56i,10n,73p,662b,843s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1414,9 +1415,9 @@ f/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fonts/type1/public
 fb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf
 /fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/
 cm-super/sftt1000.pfb>
-Output written on report.pdf (17 pages, 797112 bytes).
+Output written on report.pdf (17 pages, 799485 bytes).
 PDF statistics:
- 443 PDF objects out of 1000 (max. 8388607)
+ 448 PDF objects out of 1000 (max. 8388607)
  93 named destinations out of 1000 (max. 500000)
  250 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -17,7 +17,7 @@ the bitwise decoding rule for $x_1$ would be,
 Figure~\ref{fig:decoding_example} is the corresponding factor graph
 \begin{figure}[scale=0.5, !tp]
   \centering
-  \includegraphics[scale=0.7]{factor_graph_channel}
+  \includegraphics[scale=0.5]{factor_graph_channel}
   \caption{The factor graph corresponding to Equation~\ref{eq:decoding_example}}
   \label{fig:decoding_example}
 \end{figure}

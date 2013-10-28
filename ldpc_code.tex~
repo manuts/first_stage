@@ -30,7 +30,7 @@ are called variable and check degree distribution polynomials respectively.
 Standard ensemble LDPC$(n, \lambda, \rho)$ of bipartite graphs is defined as the set of bipartite graphs with
 $n$ variable nodes, variable degree distribution $\lambda(x)$ and check degree distribution $\rho(x)$.
 %===========================================================================================================================
-\begin{figure}[!tp]
+\begin{figure}[scale=0.2, !tp]
 \begin{center}
 \begin{tikzpicture}[var node/.style={scale = 0.8, circle,fill=blue!20,draw,font=\sffamily\Large\bfseries}, fun node/.style={scale = 0.8, circle,fill=yellow!20,draw,font=\sffamily\Large\bfseries}]
   \node[var node] (x7) at (0, 0) {$x_7$};
