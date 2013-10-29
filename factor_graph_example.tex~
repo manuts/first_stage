@@ -21,5 +21,5 @@
   \begin{subfigure}{0.3\textwidth}
     \includegraphics[scale=0.5]{factor_graph_step5}
   \end{subfigure}
-  \caption{Marginalization by message passing}\label{fig:fmarginal}
+  \caption{Marginalizaion by message passing}\label{fig:fmarginal}
 \end{figure}

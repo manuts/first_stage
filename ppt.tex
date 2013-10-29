@@ -196,7 +196,7 @@
 
   \end{frame}
   
-  \begin{frame}{Belief Propogation Decoding}
+  \begin{frame}{Belief Propagation Decoding}
   Bitwise maximum a posteriori (MAP) decoding for memoryless channel without feedback.
   \begin{eqnarray}
   \hat x_i( y) 	&=& \text{arg} \max_{x_i}p_{X_{i}|Y}(x_{i}| y) \label{eq:1}\\
@@ -263,7 +263,7 @@
  \end{itemize}
  
  \end{frame}
- \begin{frame}{Messag Passing Rules - Simplifications}
+ \begin{frame}{Message Passing Rules - Simplifications}
     \begin{eqnarray}
    r &=& \dfrac{\sum_{\lbrace x_1, x_2, \cdots, x_J : \prod_{j = 1}^J x_j = 1 \rbrace} \prod_{j = 1}^J r_j^{(1 + x_j)/2}}{\sum_{\lbrace x_1, x_2, \cdots, x_J : \prod_{j = 1}^J x_j = -1\rbrace} \prod_{j = 1}^J r_j^{(1 + x_j)/2}} \\
    &=& \dfrac{\prod_{j = 1}^J (r_j + 1) + \prod_{j = 1}^J (r_j - 1)}{\prod_{j = 1}^J (r_j + 1) - \prod_{j = 1}^J (r_j - 1)} \\
@@ -285,7 +285,7 @@
  \begin{frame}{Construction of Parity Check Matrices}
   \begin{itemize}\itemsep 0.3cm
    \item Ideally we need tree.
-   \item In practice we try to achieve a minimun girth in the tanner graph.
+   \item In practice we try to achieve a minimum girth in the tanner graph.
    \item Construction of Parity Check matrix from Reed Solomon codes.
    \begin{itemize}
     \item Minimum girth of 4 is guaranteed.
@@ -294,7 +294,7 @@
    \item Progressive Edge Growth construction
    \begin{itemize}
     \item Starts with a graph with no edges.
-    \item Progressively introduce edges such that it has minmum effect on the girth
+    \item Progressively introduce edges such that it has minimum effect on the girth
     \item Outputs both regular and irregular LDPC codes.
    \end{itemize}
   \end{itemize}
@@ -315,7 +315,7 @@
    Suppose $f$ represents the permutation in obtaining $\mathbf{G}$ from $\mathbf{H}$, and $\mathbf{G \cdot x = 0}$, then $\mathbf{H} \cdot f(\mathbf{x}) = \mathbf{0}$  
   \end{frame}
 
-  \begin{frame}{Belief Propagation Decoding for 2 User Gaussign MAC}
+  \begin{frame}{Belief Propagation Decoding for 2 User Gaussian MAC}
     \begin{eqnarray}
   \hat{x}_i^{[1]} 	&\overset{\Delta}{=}& \text{arg} \max_{x_i}p_{X_i^{[1]}|Y}(x_i^{[1]}|y) \label{eq:mac1} \\
  			&=& \text{arg} \max_{x_i}\sum_{\sim x_i^{[1]}} p_{X^{[1]}, X^{[2]}|Y} (x^{[1]}, x^{[2]}|y)  \label{eq:mac2}\\

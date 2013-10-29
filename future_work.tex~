@@ -5,6 +5,6 @@ have a better idea of the symbols if both the users are offset by half a symbol 
 Message passing rules have to be developed for this scenario.
 
 Currently some of the modules in the implementation are quite slow. Especially construction of encoder from given parity check matrix. We would strive to
-improve the performance of encoder by implementing sparse LU decomposition. Another improvement that is in order is to develop VOLK 
-libraries for 
-the GNU Radio implementation of the encoder and decoder.
+improve the performance of encoder by implementing sparse LU decomposition. Another improvement that is in order is to develop VOLK (Vector Optimized Library of Kernels - 
+a platform to improve the performance for vector operation by making use of SIMD instructions) libraries for the GNU Radio implementation of the encoder and decoder.
+The intend is to be able to use these blocks in real time
