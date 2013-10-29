@@ -47,6 +47,7 @@
 \input{mac_channel}
 \input{results}
 \input{future_work}
+\clearpage
 \input{bib}
 
 \end{document}

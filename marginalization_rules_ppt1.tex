@@ -1,0 +1,72 @@
+\begin{tikzpicture}[scale=1]
+ \tikzstyle{cnode}=[rectangle, inner sep = 2pt, fill]
+ \tikzstyle{vnode}=[circle, inner sep = 2pt, fill]
+ \tikzstyle{line} = [draw, -latex']
+ 
+ \begin{scope}
+ \begin{scope}[xshift=-3cm]
+    \draw[color=red] (0, 0) node[vnode] (x) {};
+    \draw (0, 0.3) node{$x$};
+    \draw[color=blue] (0,-1) node[cnode] (f) {};
+    \draw (0, -1.3) node{$f$};
+    \path [line] (f) -- node[left]{$\mu(x) = f(x)$} (x);
+ \end{scope}
+
+ \begin{scope}
+  \draw (0, -0.30) node{initialization at};
+  \draw (0, -0.70) node{leaf nodes};
+ \end{scope}
+
+ \begin{scope}[xshift=3cm]
+    \draw[color=blue] (0, 0) node[cnode] (f) {};
+    \draw (0, 0.3) node{$f$};
+    \draw[color=red] (0,-1) node[vnode] (x) {};
+    \draw (0, -1.3) node{$x$};
+    \path [line] (x) -- node[right]{$\mu(x) = 1$} (f);  
+  \end{scope}
+  \end{scope}
+
+  \begin{scope}[yshift=-3cm]
+  \begin{scope}[xshift=-3cm]
+ \draw[color=blue] (0, 0) node[cnode] (f) {};
+ \draw (0.3, 0) node{$f$};
+ \draw (0, 0.5) node{$\mu(x) = \prod_{k=1}^{K} \mu_k(x)$};
+ \draw[color=red] (0,-1) node[vnode] (x) {};
+ \draw (-0.3, -1) node{$x$};
+ \draw[color=blue] (-1, -2) node[cnode] (f1) {};
+ \draw (-1, -2.3) node{$f_1$};
+ \draw[color=blue] (0, -2) node[cnode] (fk) {};
+ \draw (0, -2.3) node{$f_k$};
+ \draw[color=blue] (1, -2) node[cnode] (fK) {};
+ \draw (1, -2.3) node{$f_K$};
+ \path [line] (x) -- (f);
+ \path [line] (f1) -- node[near start, left]{$\mu_1$} (x);
+ \path [line] (fk) -- node[near start, left]{$\mu_k$} (x);
+ \path [line] (fK) -- node[near start, right]{$\mu_K$} (x);
+  \end{scope}
+  
+  \begin{scope}
+    \draw (0, -0.80) node{variable/check};
+    \draw (0, -1.20) node{node processing}; 
+  \end{scope}
+
+  \begin{scope}[xshift=3cm]
+ \draw[color=red] (0, 0) node[vnode] (x) {};
+ \draw (0.3, 0) node{$x$};
+ \draw (0, 0.5) node{$\mu(x) = \sum_{\sim x}f(x, x_1, \cdots, x_K)\prod_{k=1}^{K} \mu_k(x)$};
+ \draw[color=blue] (0,-1) node[cnode] (f) {};
+ \draw (-0.3, -1) node{$f$};
+ \draw[color=red] (-1, -2) node[vnode] (x1) {};
+ \draw (-1, -2.3) node{$x_1$};
+ \draw[color=red] (0, -2) node[vnode] (xk) {};
+ \draw (0, -2.3) node{$x_k$};
+ \draw[color=red] (1, -2) node[vnode] (xK) {};
+ \draw (1, -2.3) node{$x_K$};
+ \path [line] (f) -- (x);
+ \path [line] (x1) -- node[near start, left]{$\mu_1$} (f);
+ \path [line] (xk) -- node[near start, left]{$\mu_k$} (f);
+ \path [line] (xK) -- node[near start, right]{$\mu_K$} (f);
+  \end{scope}
+  \end{scope}
+  
+\end{tikzpicture}

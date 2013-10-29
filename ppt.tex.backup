@@ -1,0 +1,389 @@
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+
+%\usepackage[utf8]{inputenc}
+\usepackage[scaled=0.92]{helvet}
+\usepackage{tikz}
+\usepackage{amsmath, amssymb}
+\usepackage{pgf}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{positioning}
+\usetikzlibrary{intersections} 
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{epstopdf}
+\usepackage{color}
+\usepackage{alltt}
+\usepackage{hyperref}
+\usepackage{listings}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{arrows, shapes, shadows, positioning}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{courier}
+%\usepackage{default}
+
+\title[]{LDPC Codes, Construction and Application}
+\author[Manu T S]{Manu T S \\ {\footnotesize Advisor : Prof. Sibi Raj B Pillai}}
+\institute[IITB]{IIT Bombay}
+
+\begin{document}
+
+  % Slide 1 starts
+  \frame{\titlepage}
+  % Slide 1 ends
+
+    \begin{frame}{What is an LDPC Code}
+    \begin{block}{A linear error correcting code}
+      All codewords should satisfy
+      \begin{equation}
+       \mathbf{Hx} = \mathbf{0}
+      \end{equation}
+      Any vector that satisfy above equation is a codeword
+    \end{block}
+    \begin{block}{A block code}
+      If \textbf{H} is $M$ x $N$ and has rank $R$ then the code has dimension
+      \begin{center}
+	$K = N - R$
+      \end{center}
+      Block length of the code is $N$.
+    \end{block}
+    \begin{block}{Sparse \textbf{H}}
+      Here we are dealing with binary LDPC codes, so H has few 1s rest all zeros
+    \end{block}
+  \end{frame}
+  % Slide  ends
+%   
+  % Slide starts
+  \begin{frame}{Tanner Graph}
+    \begin{equation}
+      \label{H_matrix}
+      \mathbf{H} = 
+      \left(
+      \begin{array}{ccccccc}
+      1 & 1 & 0 & 1 & 1 & 0 & 0  \\
+      1 & 0 & 1 & 1 & 0 & 1 & 0  \\
+      0 & 1 & 1 & 1 & 0 & 0 & 1 
+      \end{array}
+      \right)
+    \end{equation}
+    \begin{figure}
+    \begin{tikzpicture}[scale = 0.6, var node/.style={scale = 0.4, circle,fill=blue!20,draw,font=\sffamily\Large\bfseries}, fun node/.style={scale = 0.4, circle,fill=yellow!20,draw,font=\sffamily\Large\bfseries}]
+      \node[var node] (x7) at (0, 0) {$x_7$};
+      \node[var node] (x6) at (0, -1) {$x_6$};
+      \node[var node] (x5) at (0, -2) {$x_5$};
+      \node[var node] (x4) at (0, -3) {$x_4$};
+      \node[var node] (x3) at (0, -4) {$x_3$};
+      \node[var node] (x2) at (0, -5) {$x_2$};
+      \node[var node] (x1) at (0, -6) {$x_1$};  
+      \node[fun node] (f3) at (4, 0) {$f_3$};
+      \node[fun node] (f2) at (4, -3) {$f_2$};
+      \node[fun node] (f1) at (4, -6) {$f_1$};
+      \draw[thick,draw=gray!100] (x1) -- node [below = 6pt] {(a)} (f1);
+      \draw[thick,draw=gray!100] (x2) --  (f1);
+      \draw[thick,draw=gray!100] (x4) --  (f1);
+      \draw[thick,draw=gray!100] (x5) --  (f1);
+      \draw[thick,draw=gray!100] (x1) --  (f2);
+      \draw[thick,draw=gray!100] (x3) --  (f2);
+      \draw[thick,draw=gray!100] (x4) --  (f2);
+      \draw[thick,draw=gray!100] (x6) --  (f2);
+      \draw[thick,draw=gray!100] (x3) --  (f3);
+      \draw[thick,draw=gray!100] (x2) --  (f3);
+      \draw[thick,draw=gray!100] (x4) --  (f3);
+      \draw[thick,draw=gray!100] (x7) --  (f3);
+    \end{tikzpicture}
+    \end{figure}
+  \end{frame}
+  
+  % Slide starts
+  \begin{frame}{Degree Distribution}
+    Let $\lambda$ and $\rho$ be vectors such that their $i^{th}$ component $\lambda_i$ and $\rho_i$ represent the fraction of edges
+    connecting to a variable node of degree $i$ and check node of degree $i$ respectively. Thus
+    \begin{equation}\nonumber
+    \lambda(x) = \displaystyle \sum_i \lambda_ix^{i-1} \hspace{8pt}\text{and}\hspace{8pt} \rho(x) = \displaystyle \sum_i \rho_ix^{i-1}
+    \end{equation}
+    are called variable and check degree distribution polynomials respectively.
+    \begin{itemize}
+     \item Regular LDPC Codes
+     \item Irregular LDPC Codes
+     \item Ensemble LDPC($n, \lambda, \rho $)
+    \end{itemize}
+  \end{frame}
+  % Slide ends
+
+  \begin{frame}{Marginalization by Message Passing}
+    For
+    \begin{equation*}
+      f(x_1,x_2,x_3,x_4,x_5,x_6) = f_1(x_1,x_2,x_3)f_2(x_1,x_4,x_6)f_3(x_4)f_4(x_4, x_5) \label{eq:fx}
+    \end{equation*}
+    \begin{eqnarray}
+      f(x_1) 	=\sum_{x_2, x_3, x_4, x_5, x_6} f(x_1,x_2,x_3,x_4,x_5,x_6) \nonumber \\
+	=\left[\sum_{x_2, x_3} f_1(x_1, x_2, x_3)\right]\left[\sum_{x_4}f_3(x_4)\left(\sum_{x_6}f_2(x_1, x_4, x_6)\right)\left(\sum_{x_5}f_4(x_4, x_5)\right)\right] \nonumber
+    \end{eqnarray}
+  \end{frame}
+  
+  \begin{frame}{Factor Graph}
+      For
+    \begin{equation*}
+  \left[\sum_{x_2, x_3} f_1(x_1, x_2, x_3)\right]\left[\sum_{x_4}f_3(x_4)\left(\sum_{x_6}f_2(x_1, x_4, x_6)\right)\left(\sum_{x_5}f_4(x_4, x_5)\right)\right]
+    \end{equation*}
+   \begin{figure}[scale=0.7]
+  \begin{center}
+  \input{factor_graph}
+  \end{center}
+  \end{figure}
+  \end{frame}
+  
+  \begin{frame}{Message Passing Rules}
+   \begin{figure}
+  \begin{center}
+  \input{marginalization_rules_ppt1}
+  \end{center}
+  \end{figure}
+  \end{frame}
+  
+  \begin{frame}{Message Passing Rules}
+   \begin{figure}
+  \begin{center}
+  \input{marginalization_rules_ppt2}
+  \end{center}
+  \end{figure}
+  \end{frame}
+  
+  \begin{frame}{Message Passing Example}
+   \begin{figure}
+    \centering
+      \begin{subfigure}{0.3\textwidth}
+    \includegraphics[scale=0.6]{factor_graph}
+  \end{subfigure}
+  \hspace{1.5cm}
+  \begin{subfigure}{0.3\textwidth}
+    \includegraphics[scale=0.6]{factor_graph_step1}
+  \end{subfigure}
+   \end{figure}
+
+  \end{frame}
+
+    \begin{frame}{Message Passing Example}
+   \begin{figure}
+    \centering
+  \begin{subfigure}{0.3\textwidth}
+    \includegraphics[scale=0.6]{factor_graph_step2}
+  \end{subfigure}
+  \hspace{1.5cm}
+  \begin{subfigure}{0.3\textwidth}
+    \includegraphics[scale=0.6]{factor_graph_step3}
+  \end{subfigure}
+   \end{figure}
+
+  \end{frame}
+  
+      \begin{frame}{Message Passing Example}
+   \begin{figure}
+    \centering
+  \begin{subfigure}{0.3\textwidth}
+    \includegraphics[scale=0.6]{factor_graph_step4}
+  \end{subfigure}
+  \hspace{1.5cm}
+  \begin{subfigure}{0.3\textwidth}
+    \includegraphics[scale=0.6]{factor_graph_step5}
+  \end{subfigure}
+   \end{figure}
+
+  \end{frame}
+  
+  \begin{frame}{Belief Propogation Decoding}
+  Bitwise maximum a posteriori (MAP) decoding for memoryless channel without feedback.
+  \begin{eqnarray}
+  \hat x_i( y) 	&=& \text{arg} \max_{x_i}p_{X_{i}|Y}(x_{i}| y) \label{eq:1}\\
+		&=& \text{arg} \max_{x_i}\sum_{\sim x_i}p_{X|Y}( x| y) \label{eq:2}\\
+		&=& \text{arg} \max_{x_i}\sum_{\sim x_i}p_{Y|X}( y| x)p_{X}( x) \label{eq:3}\\
+		&=& \text{arg} \max_{x_i}\sum_{\sim x_i}\prod_{j}p_{Y_j|X_j}(y_j|x_j)p_{X}( x)\label{eq:4} \\
+   		&=& \text{arg} \max_{x_i}\sum_{\sim x_i}\prod_{j}p_{Y_j|X_j}(y_j|x_j)\mathbf{1}_{\left\lbrace x\in C\right\rbrace} \label{eq:5}
+  \end{eqnarray} 
+  \end{frame}
+
+
+  \begin{frame}{An Example}
+   Given the parity check matrix
+\begin{equation}
+\label{H_matrix}
+ \textbf{H} = 
+ \left(
+\begin{array}{ccccccc}
+1 & 0 & 0 & 1 & 0 & 1 & 1  \\
+0 & 1 & 0 & 1 & 1 & 1 & 0  \\
+0 & 0 & 1 & 0 & 1 & 1 & 1 
+\end{array}
+\right)
+\end{equation}
+\fontsize{7pt}{7.2}\selectfont
+\begin{equation}
+\hat x_i(y) = \text{arg} \max_{x_i}\sum_{\sim x_i}\prod_{j}p_{Y_j|X_j}(y_j|x_j)\mathbf{1}_{\left\lbrace x_1 + x_4 + x_6 + x_7 = 0\right\rbrace}\mathbf{1}_{\left\lbrace x_2 + x_4 + x_5 + x_6 = 0\right\rbrace}\mathbf{1}_{\left\lbrace x_3 + x_5 + x_6 + x_7 = 0\right\rbrace} \label{eq:decoding_example}
+\end{equation}
+\begin{figure}[scale=0.5, !tp]
+  \centering
+  \includegraphics[scale=0.5]{factor_graph_channel}
+\end{figure}
+  \end{frame}
+  
+  \begin{frame}{Message Passing Rules - Simplifications}
+  \begin{itemize} \itemsep 0.2cm
+  \item In the binary case the message is $\left( \mu(1), \mu(-1)\right)$.
+  \item $\left( \mu(1), \mu(-1)\right) \gets \left( p_{y_i|x_i}(y_i|1), p_{y_i|x_i}(y_i|-1)\right)$
+  \item At a variable node of degree $K + 1$,
+  \begin{equation*}
+    \mu(1) = \prod_{k = 1}^K \mu_k(1), \quad \mu(-1) = \prod_{k = 1}^K \mu_k(-1)
+    \end{equation*}
+  \item $r_k \gets \mu_k(1)/\mu_k(-1)$
+  \begin{equation*}
+   r = \dfrac{\mu(1)}{\mu(-1)} = \dfrac{\prod_{k = 1}^K \mu_k(1)}{\prod_{k = 1}^K \mu_k(-1)} = \prod_k r_k
+  \end{equation*}
+  \item If $l_k = \log(r_k)$, processing rule becomes $l = \sum_k l_k$
+
+  \end{itemize}
+  \end{frame}
+  
+ \begin{frame}{Message Passing Rules - Simplifications}
+ \begin{itemize} \itemsep 0.2cm
+  \item At a check node of degree $J + 1$ the computation is
+  \begin{equation}
+   \mu(x) = \sum_{x_1, x_2, \cdots, x_J} \mathbf{1}_{\lbrace \prod_{j = 1}^J x_j = x\rbrace} \prod_{j = 1}^J \mu_j(x_j)
+  \end{equation}
+  \begin{eqnarray}
+   r = \dfrac{\mu(1)}{\mu(-1)} &=& \dfrac{\sum_{\lbrace x_1, x_2, \cdots, x_J : \prod_{j = 1}^J x_j = 1\rbrace} \prod_{j = 1}^J \mu_j(x_j)}{\sum_{\lbrace x_1, x_2, \cdots, x_J : \prod_{j = 1}^J x_j = -1 \rbrace} \prod_{j = 1}^J \mu_j(x_j)} \\
+   &=& \dfrac{\sum_{\lbrace x_1, x_2, \cdots, x_J : \prod_{j = 1}^J x_j = 1\rbrace} \prod_{j = 1}^J \dfrac{\mu_j(x_j)}{\mu_j(-1)}}{\sum_{\lbrace x_1, x_2, \cdots, x_J : \prod_{j = 1}^J x_j = -1\rbrace} \prod_{j = 1}^J \dfrac{\mu_j(x_j)}{\mu_j(-1)}}
+  \end{eqnarray}
+
+ 
+ \end{itemize}
+ 
+ \end{frame}
+ \begin{frame}{Messag Passing Rules - Simplifications}
+    \begin{eqnarray}
+   r &=& \dfrac{\sum_{\lbrace x_1, x_2, \cdots, x_J : \prod_{j = 1}^J x_j = 1 \rbrace} \prod_{j = 1}^J r_j^{(1 + x_j)/2}}{\sum_{\lbrace x_1, x_2, \cdots, x_J : \prod_{j = 1}^J x_j = -1\rbrace} \prod_{j = 1}^J r_j^{(1 + x_j)/2}} \\
+   &=& \dfrac{\prod_{j = 1}^J (r_j + 1) + \prod_{j = 1}^J (r_j - 1)}{\prod_{j = 1}^J (r_j + 1) - \prod_{j = 1}^J (r_j - 1)} \\
+   &=& \dfrac{1 + \dfrac{\prod_{j = 1}^J (r_j - 1)}{\prod_{j = 1}^J (r_j + 1)}}{1 - \dfrac{\prod_{j = 1}^J (r_j - 1)}{\prod_{j = 1}^J (r_j + 1)}} \\
+   \implies \dfrac{r - 1}{r + 1} &=& \prod_{j = 1}^{J} \dfrac{r_j - 1}{r_j + 1}
+  \end{eqnarray}
+ \end{frame}
+
+ \begin{frame}{Message Passing Rules - Simplifications}
+  \begin{eqnarray}
+   r &=& \exp (l) \\
+   \implies \tanh(l/2) &=& \dfrac{r - 1}{r + 1} \\
+   &=& \prod_{j = 1}^{J} \dfrac{r_j - 1}{r_j + 1} \\
+   &=& \prod_{j = 1}^{J} \tanh(l_j/2) \\
+   \implies l &=& 2\tanh^{-1} \left( \prod_{j = 1}^{J} \tanh(l_j/2) \right)
+  \end{eqnarray}
+ \end{frame}
+ 
+ \begin{frame}{Construction of Parity Check Matrices}
+  \begin{itemize}\itemsep 0.3cm
+   \item Ideally we need tree.
+   \item In practice we try to achieve a minimun girth in the tanner graph.
+   \item Construction of Parity Check matrix from Reed Solomon codes.
+   \begin{itemize}
+    \item Minimum girth of 4 is guaranteed.
+    \item Constructs a regular LDPC code.
+   \end{itemize}
+   \item Progressive Edge Growth construction
+   \begin{itemize}
+    \item Starts with a graph with no edges.
+    \item Progressively introduce edges such that it has minmum effect on the girth
+    \item Outputs both regular and irregular LDPC codes.
+   \end{itemize}
+  \end{itemize}
+ \end{frame}
+ 
+   \begin{frame}{Encoding}
+   If the parity check matrix is given as $\mathbf{\left[{I \; P}\right]}$, where $\mathbf{I}$ is $N - K$ x $N - K$ identity matrix, $\mathbf{P}$ is some $N - K$ x $K$ matrix,
+   a codeword $\mathbf{x = \left[x_p^{\mathsf{T}} \; x_d^{\mathsf{T}}\right]^{\mathsf{T}}}$ can be formed by assigning
+    \begin{equation}\nonumber
+    \mathbf{x_p = P \cdot x_d}
+    \end{equation}
+   We obtain $\mathbf{G = \left[{I \; P}\right]}$ from $\mathbf{H}$ by
+   \begin{itemize}
+    \item Column permutation
+    \item Row additions
+    \item Row permutations
+   \end{itemize}
+   Suppose $f$ represents the permutation in obtaining $\mathbf{G}$ from $\mathbf{H}$, and $\mathbf{G \cdot x = 0}$, then $\mathbf{H} \cdot f(\mathbf{x}) = \mathbf{0}$  
+  \end{frame}
+
+  \begin{frame}{Belief Propagation Decoding for 2 User Gaussign MAC}
+    \begin{eqnarray}
+  \hat{x}_i^{[1]} 	&\overset{\Delta}{=}& \text{arg} \max_{x_i}p_{X_i^{[1]}|Y}(x_i^{[1]}|y) \label{eq:mac1} \\
+ 			&=& \text{arg} \max_{x_i}\sum_{\sim x_i^{[1]}} p_{X^{[1]}, X^{[2]}|Y} (x^{[1]}, x^{[2]}|y)  \label{eq:mac2}\\
+ 			&=& \text{arg} \max_{x_i}\sum_{\sim x_i^{[1]}} p_{Y|X^{[1]}, X^{[2]}} (y|x^{[1]}, x^{[2]}) p_{X^{[1]}, X^{[2]}}(x^{[1]}, x^{[2]}) \label{eq:mac3}\\
+ 			&=& \text{arg} \max_{x_i}\sum_{\sim x_i^{[1]}} p_{Y|X^{[1]}, X^{[2]}} (y|x^{[1]}, x^{[2]}) p_{X^{[1]}}(x^{[1]}) p_{X^{[2]}}(x^{[2]}) \label{eq:mac4}\\
+ 			&=& \text{arg} \max_{x_i}\sum_{\sim x_i^{[1]}} \prod_j p_{Y_j|X_j^{[1]}, X_j^{[2]}} (y_j|x_j^{[1]}, x_j^{[2]}) \mathbf{1}_{\lbrace x^{[1]} \in \mathcal{C}^{[1]}\rbrace} \mathbf{1}_{\lbrace x^{[2]} \in \mathcal{C}^{[2]}\rbrace} \label{eq:mac5}
+ \end{eqnarray}
+  \end{frame}
+
+  \begin{frame}{Factor Graph for Joint Decoding}
+   \input{2user_factor_ppt}
+  \end{frame}
+
+  \begin{frame}{Message Passing Rules for Joint Decoding}
+   \begin{itemize}\itemsep 0.4cm
+    \item At variable nodes and at Check nodes the rules are the same.
+    \item Rule for the function node
+    \fontsize{7pt}{7.2}\selectfont
+    \begin{eqnarray}
+  \mu_{s_i \rightarrow x_i^{[2]}} &=& \log \left( \dfrac{\exp( \mu_{x_i^{[1]} \rightarrow s_i}) p(y|x_i^{[1]} = -1, x_i^{[2]} = -1) + p(y|x_i^{[1]} = 1, x_i^{[2]} = -1)}{\exp( \mu_{x_i^{[1]} \rightarrow s_i}) p(y|x_i^{[1]} = -1, x_i^{[2]} = 1) + p(y|x_i^{[1]} = 1, x_i^{[2]} = 1)} \right) \\
+  \mu_{s_i \rightarrow x_i^{[1]}} &=& \log \left( \dfrac{\exp( \mu_{x_i^{[2]} \rightarrow s_i}) p(y|x_i^{[1]} = -1, x_i^{[2]} = -1) + p(y|x_i^{[1]} = -1, x_i^{[2]} = 1)}{\exp( \mu_{x_i^{[2]} \rightarrow s_i}) p(y|x_i^{[1]} = 1, x_i^{[2]} = -1) + p(y|x_i^{[1]} = 1, x_i^{[2]} = 1)} \right)
+  \end{eqnarray}
+   \end{itemize}
+  \end{frame}
+
+     \begin{frame}{Results - Bit Error Rate Performance}
+  (3, 6) Regular Code of block length $N = 96$, dimension $K = 50$, \\
+  Number of parity checks $M = 48$,  $10^7$ Bytes Transferred
+\begin{center}
+ \begin{tabular}{| l | l | l | l | l |}
+ \hline
+ {}	&  \multicolumn{2}{c|}{No Code} 	&  \multicolumn{2}{c|}{With LDPC}		\\ \hline
+  sigma & Errors		& BER		& Errors		& BER		 	\\ \hline
+  0.3  	& 4338			& 0.0004338	& 0			& 0			\\ \hline
+  0.4	& 61814			& 0.0061814	& 0			& 0			\\ \hline
+  0.5	& 227228		& 0.0227228	& 31			& 3.1e-06		\\ \hline
+  0.6	& 477744		& 0.0477744	& 65855			& 0.0065855		\\ \hline
+  0.7	& 765326		& 0.0765326	& 572393		& 0.0572393		\\ \hline
+  0.8	& 1055848		& 0.1055848	& 968856		& 0.0968856		\\ \hline
+  0.9	& 1332039		& 0.1332039	& 1291208		& 0.1291208		\\ \hline
+  1.0	& 1585653		& 0.1585653	& 1565803		& 0.1565803		\\ \hline
+ \end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame} {Results - Block Error Rate Performance}
+LDPC generated using PEG Algorithm, \\ 
+Block length $N = 1008$, Dimension $K = 504$ \\
+Number of Parity Checks $M = 504$
+\begin{center}
+ \begin{tabular}{| c | c | c | c | c |}
+ \hline
+ {}	&  \multicolumn{2}{c|}{No Code} 	&  \multicolumn{2}{c|}{With LDPC}		\\ \hline
+  sigma & Errors		& BER		& Errors		& BER		 	\\ \hline
+  0.3  	& 3898			& 0.196461	& 0			& 0			\\ \hline
+  0.4	& 18938			& 0.954488	& 0			& 0			\\ \hline
+  0.5	& 19840			& 0.999994	& 0			& 0			\\ \hline
+  0.6	& 19841			& 1.0		& 17			& 0.0008568		\\ \hline
+  0.7	& 19841			& 1.0		& 19841			& 1.0			\\ \hline
+ \end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Results - Plots}
+ \begin{figure}
+  \centering
+  \includegraphics[scale=0.5]{ber_plot}
+\end{figure}
+\end{frame}
+
+\end{document}

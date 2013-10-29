@@ -1,0 +1,23 @@
+\begin{tikzpicture}[scale=1]
+ \tikzstyle{cnode}=[rectangle, inner sep = 2pt, fill]
+ \tikzstyle{vnode}=[circle, inner sep = 2pt, fill]
+ \tikzstyle{line} = [draw, -latex']
+  
+ \draw[color=blue] (0, 0) node[cnode] (f) {};
+ \draw (0.5, 0) node{$f_{K + 1}$};
+ \draw (0, 0.5) node{marginalization};
+ \draw[color=red] (0,-1) node[vnode] (x) {};
+ \draw (-0.3, -1) node{$x$};
+ \draw[color=blue] (-1, -2) node[cnode] (f1) {};
+ \draw (-1, -2.3) node{$f_1$};
+ \draw[color=blue] (0, -2) node[cnode] (fk) {};
+ \draw (0, -2.3) node{$f_k$};
+ \draw[color=blue] (1, -2) node[cnode] (fK) {};
+ \draw (1, -2.3) node{$f_K$};
+ \draw (-1.5, -1) node{$\prod_{k=1}^{K+1} \mu_k(x)$};
+ \path [line] (f) -- node[right] {$\mu_{K + 1}$} (x);
+ \path [line] (f1) -- node[near start, left]{$\mu_1$} (x);
+ \path [line] (fk) -- node[near start, left]{$\mu_k$} (x);
+ \path [line] (fK) -- node[near start, right]{$\mu_K$} (x);
+  
+\end{tikzpicture}

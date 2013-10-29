@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.10.12)  28 OCT 2013 17:04
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.10.24)  29 OCT 2013 20:09
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -1186,30 +1186,30 @@ i-als re-spec-tively. Stan-dard en-sem-ble LDPC$\OT1/cmr/m/n/10 (\OML/cmm/m/it/
 
 (./factor_graph.tex) [2] (./marginalization_rules.tex)
 (./factor_graph_example.tex
-<factor_graph.pdf, id=121, 216.24739pt x 207.88968pt>
+<factor_graph.pdf, id=125, 216.24739pt x 207.88968pt>
 File: factor_graph.pdf Graphic file (type pdf)
  <use factor_graph.pdf>
-<factor_graph_step1.pdf, id=123, 216.24739pt x 207.88968pt>
+<factor_graph_step1.pdf, id=127, 216.24739pt x 207.88968pt>
 File: factor_graph_step1.pdf Graphic file (type pdf)
 
 <use factor_graph_step1.pdf>
-<factor_graph_step2.pdf, id=125, 216.24739pt x 207.88968pt>
+<factor_graph_step2.pdf, id=129, 216.24739pt x 207.88968pt>
 File: factor_graph_step2.pdf Graphic file (type pdf)
 
 <use factor_graph_step2.pdf>
-<factor_graph_step3.pdf, id=127, 216.24739pt x 207.88968pt>
+<factor_graph_step3.pdf, id=131, 216.24739pt x 207.88968pt>
 File: factor_graph_step3.pdf Graphic file (type pdf)
 
 <use factor_graph_step3.pdf>
-<factor_graph_step4.pdf, id=129, 216.24739pt x 207.88968pt>
+<factor_graph_step4.pdf, id=133, 216.24739pt x 207.88968pt>
 File: factor_graph_step4.pdf Graphic file (type pdf)
 
 <use factor_graph_step4.pdf>
-<factor_graph_step5.pdf, id=131, 216.24739pt x 207.88968pt>
+<factor_graph_step5.pdf, id=135, 216.24739pt x 207.88968pt>
 File: factor_graph_step5.pdf Graphic file (type pdf)
 
 <use factor_graph_step5.pdf>) [3] (./decoding.tex
-<factor_graph_channel.pdf, id=151, 414.12872pt x 166.3402pt>
+<factor_graph_channel.pdf, id=155, 414.12872pt x 166.3402pt>
 File: factor_graph_channel.pdf Graphic file (type pdf)
 
 <use factor_graph_channel.pdf>)
@@ -1355,34 +1355,33 @@ fier (name{equation.7.24}) has been already used, duplicate ignored
                                                   \fi \fi 
 l.65 \end{eqnarray}
                    ] [13] [14]) (./results.tex
-<ber_plot.pdf, id=274, 587.19376pt x 442.65375pt>
+<ber_plot.pdf, id=278, 587.19376pt x 442.65375pt>
 File: ber_plot.pdf Graphic file (type pdf)
  <use ber_plot.pdf>
-<ldpc.png, id=278, 1927.2pt x 1084.05pt>
+<ldpc.png, id=282, 1927.2pt x 1084.05pt>
 File: ldpc.png Graphic file (type png)
- <use ldpc.png>) [15pdfTeX warning (ext4): destination with the same identifier
- (name{equation.7.31}) has been already used, duplicate ignored
+ <use ldpc.png>) (./future_work.tex
+[15pdfTeX warning (ext4): destination with the same identifier (name{equation.7
+.31}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.49 \clearpage
-               ] [16 <./ber_plot.pdf> <./ldpc.png (PNG copy)>] (./bib.tex
+l.6 
+    ] [16 <./ber_plot.pdf> <./ldpc.png (PNG copy)>]) (./bib.tex
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 27.
 
 (/usr/share/texmf-texlive/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)) [17
-
-] (./report.aux)
+)) [17] (./report.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 20504 strings out of 493848
- 390187 string characters out of 1152822
+ 20509 strings out of 493848
+ 390250 string characters out of 1152822
  543371 words of memory out of 3000000
- 23201 multiletter control sequences out of 15000+50000
+ 23202 multiletter control sequences out of 15000+50000
  24898 words of font info for 58 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  56i,10n,73p,662b,843s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1415,9 +1414,9 @@ f/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fonts/type1/public
 fb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf
 /fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/
 cm-super/sftt1000.pfb>
-Output written on report.pdf (17 pages, 799485 bytes).
+Output written on report.pdf (17 pages, 801270 bytes).
 PDF statistics:
- 448 PDF objects out of 1000 (max. 8388607)
- 93 named destinations out of 1000 (max. 500000)
- 250 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 452 PDF objects out of 1000 (max. 8388607)
+ 94 named destinations out of 1000 (max. 500000)
+ 258 words of extra memory for PDF output out of 10000 (max. 10000000)
 

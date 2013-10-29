@@ -1,0 +1,12 @@
+\contentsline {section}{\numberline {1}Motivation}{2}{section.1}
+\contentsline {section}{\numberline {2}LDPC Codes}{2}{section.2}
+\contentsline {section}{\numberline {3}Marginalization Via Message Passing}{3}{section.3}
+\contentsline {section}{\numberline {4}Decoding Via Message Passing}{4}{section.4}
+\contentsline {subsection}{\numberline {4.1}Message Passing decoder for Binary Erasure Channel}{5}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Message Passing Decoder for Binary Input AWGN Channel}{7}{subsection.4.2}
+\contentsline {section}{\numberline {5}Construction of the parity check matrix}{9}{section.5}
+\contentsline {subsection}{\numberline {5.1}Construction of LDPC Codes using Reed-Solomon code}{9}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Construction of Parity Check Matrix using Progressive Edge Growth}{10}{subsection.5.2}
+\contentsline {section}{\numberline {6}Encoding}{11}{section.6}
+\contentsline {section}{\numberline {7}Belief Propagation Decoding for 2 User Gaussign MAC}{13}{section.7}
+\contentsline {section}{\numberline {8}Outcomes and Results}{16}{section.8}
