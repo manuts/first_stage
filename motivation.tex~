@@ -15,4 +15,4 @@ The use of GNU Radio in research related to Software Defined Radio, Digital Sign
 and Communication Engineering is becoming increasingly widespread.
 In this project we implement a generic encoder and decoder for LDPC codes in GNU Radio and
 also implement algorithms for construction of LDPC codes. We extend this by implementing belief propagation decoder for joint decoding
-of 2-user Gaussian MAC. The hope is that we can improve upon this by offsetting the transmission of the 2 users.
+of 2-user Gaussian MAC. The hope is that we can improve upon this by using offsetting the transmission of the 2 users.

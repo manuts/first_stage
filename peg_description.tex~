@@ -13,7 +13,7 @@ Let us describe variable node degree sequence as follow:
  D_x=\{{d_x}_1,{d_x}_2,\cdots,{d_x}_n\},~ {d_x}_1 \leq {d_x}_2 \leq \cdots \leq {d_x}_n
 \end{equation*}
 Where ${d_x}_i$ presents the degree of $i^{th}$ variable node $x_i$.
-\begin{algorithm}
+\begin{algorithm}[H]
 \caption{Progressive Edge Growth Algorithm\cite{peg}}
 \label{peg_algo}
 %\algsetup{indent=2em}

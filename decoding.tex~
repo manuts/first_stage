@@ -15,9 +15,9 @@ the bitwise decoding rule for $x_1$ would be,
 \hat x_i(y) = \text{arg} \max_{x_i}\sum_{\sim x_i}\prod_{j}p_{Y_j|X_j}(y_j|x_j)\mathbf{1}_{\left\lbrace x_1 + x_4 + x_6 + x_7 = 0\right\rbrace}\mathbf{1}_{\left\lbrace x_2 + x_4 + x_5 + x_6 = 0\right\rbrace}\mathbf{1}_{\left\lbrace x_3 + x_5 + x_6 + x_7 = 0\right\rbrace} \label{eq:decoding_example}
 \end{equation} 
 Figure~\ref{fig:decoding_example} is the corresponding factor graph
-\begin{figure}
+\begin{figure}[scale=0.3]
   \centering
-  \includegraphics[scale=0.5]{factor_graph_channel}
+  \includegraphics[scale=0.7]{factor_graph_channel}
   \caption{The factor graph corresponding to Equation~\ref{eq:decoding_example}}
   \label{fig:decoding_example}
 \end{figure}

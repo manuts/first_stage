@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.10.12)  29 OCT 2013 22:46
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.10.24)  30 OCT 2013 15:24
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -1208,8 +1208,10 @@ File: factor_graph_step4.pdf Graphic file (type pdf)
 <factor_graph_step5.pdf, id=135, 216.24739pt x 207.88968pt>
 File: factor_graph_step5.pdf Graphic file (type pdf)
 
-<use factor_graph_step5.pdf>) [3] (./decoding.tex
-<factor_graph_channel.pdf, id=155, 414.12872pt x 166.3402pt>
+<use factor_graph_step5.pdf>) [3] [4 <./factor_graph.pdf> <./factor_graph_step1
+.pdf> <./factor_graph_step2.pdf> <./factor_graph_step3.pdf> <./factor_graph_ste
+p4.pdf> <./factor_graph_step5.pdf>] (./decoding.tex
+<factor_graph_channel.pdf, id=165, 414.12872pt x 166.3402pt>
 File: factor_graph_channel.pdf Graphic file (type pdf)
 
 <use factor_graph_channel.pdf>)
@@ -1232,10 +1234,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 64--77
 
  []
 
-[4] [5 <./factor_graph.pdf> <./factor_graph_step1.pdf> <./factor_graph_step2.pd
-f> <./factor_graph_step3.pdf> <./factor_graph_step4.pdf> <./factor_graph_step5.
-pdf> <./factor_graph_channel.pdf>] (./message_passing.tex) (./awgn_channel.tex)
-[6] [7]) (./RS_H1.tex [8]) (./peg_description.tex
+[5 <./factor_graph_channel.pdf>] (./message_passing.tex) (./awgn_channel.tex))
+(./RS_H1.tex [6] [7]) (./peg_description.tex
 Overfull \hbox (1.23758pt too wide) in paragraph at lines 2--12
 \T1/cmr/m/n/10 Let us de-note the vari-able nodes by $\OML/cmm/m/it/10 x[]; i \
 OMS/cmsy/m/n/10 2 f\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 2\OML/cm
@@ -1244,10 +1244,9 @@ es by $\OML/cmm/m/it/10 f[]; i \OMS/cmsy/m/n/10 2 f\OT1/cmr/m/n/10 1\OML/cmm/m/
 it/10 ; \OT1/cmr/m/n/10 2\OML/cmm/m/it/10 ; []  ; m\OMS/cmsy/m/n/10 g$
  []
 
-[9]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 17.
-) (./encoding.tex
+) (./encoding.tex [8]
 
 ! Package pgfkeys Error: I do not know the key '/tikz/right of N1' and I am goi
 ng to ignore it. Perhaps you misspelled it.
@@ -1287,7 +1286,7 @@ l.53             \node[right of N1]
                                     {$f\left(\mathbf{x}\right)$};
 (That was another \errmessage.)
 
-) (./mac_channel.tex [10] [11]
+) (./mac_channel.tex [9] [10]
 
 ! Package pgfkeys Error: I do not know the key '/tikz/latex' and I am going to 
 ignore it. Perhaps you misspelled it.
@@ -1348,43 +1347,81 @@ l.47   \path [draw, latex] (
                             2, 4) -- (4, 2);
 (That was another \errmessage.)
 
-(./2user_factor.tex) [12pdfTeX warning (ext4): destination with the same identi
+(./2user_factor.tex) [11pdfTeX warning (ext4): destination with the same identi
 fier (name{equation.7.24}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.65 \end{eqnarray}
-                   ] [13] [14]) (./results.tex
-<ber_plot.pdf, id=278, 587.19376pt x 442.65375pt>
+l.84  \begin{eqnarray}
+                      ]pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.7.31}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.84  \begin{eqnarray}
+                      ) (./results.tex (./rate_pair.tex
+
+! Package pgfkeys Error: I do not know the key '/tikz/latex' and I am going to 
+ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6   \path [draw, latex] (
+                           0, 3.4827) -- (1.272, 3.4827);
+(That was another \errmessage.)
+
+
+! Package pgfkeys Error: I do not know the key '/tikz/latex' and I am going to 
+ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.7   \path [draw, latex] (
+                           1.272, 3.4827) -- (3.4827, 1.272);
+(That was another \errmessage.)
+
+
+! Package pgfkeys Error: I do not know the key '/tikz/latex' and I am going to 
+ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.8   \path [draw, latex] (
+                           3.4827, 1.272) -- (3.4827, 0);
+(That was another \errmessage.)
+
+) <ber_plot.pdf, id=265, 587.19376pt x 442.65375pt>
 File: ber_plot.pdf Graphic file (type pdf)
  <use ber_plot.pdf>
-<ldpc.png, id=282, 1927.2pt x 1084.05pt>
+<ldpc.png, id=269, 1927.2pt x 1084.05pt>
 File: ldpc.png Graphic file (type png)
  <use ldpc.png>) (./future_work.tex
-[15pdfTeX warning (ext4): destination with the same identifier (name{equation.7
-.31}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.6 
-    ] [16 <./ber_plot.pdf> <./ldpc.png (PNG copy)>]) (./bib.tex
+[12]) [13] [14] [15] [16] [17 <./ber_plot.pdf> <./ldpc.png (PNG copy)>]
+(./bib.tex
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 27.
-
-(/usr/share/texmf-texlive/tex/latex/base/t1cmtt.fd
+ (/usr/share/texmf-texlive/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)) [17] (./report.aux)
+)) [18
+
+]
+(./report.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 20509 strings out of 493848
- 390250 string characters out of 1152822
- 543371 words of memory out of 3000000
- 23202 multiletter control sequences out of 15000+50000
+ 20539 strings out of 493848
+ 390692 string characters out of 1152822
+ 583080 words of memory out of 3000000
+ 23227 multiletter control sequences out of 15000+50000
  24898 words of font info for 58 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 56i,10n,73p,662b,843s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 56i,10n,73p,663b,843s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{algorithm.2} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -1414,9 +1451,9 @@ f/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fonts/type1/public
 fb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf
 /fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/
 cm-super/sftt1000.pfb>
-Output written on report.pdf (17 pages, 801269 bytes).
+Output written on report.pdf (18 pages, 802830 bytes).
 PDF statistics:
- 452 PDF objects out of 1000 (max. 8388607)
- 94 named destinations out of 1000 (max. 500000)
+ 458 PDF objects out of 1000 (max. 8388607)
+ 96 named destinations out of 1000 (max. 500000)
  258 words of extra memory for PDF output out of 10000 (max. 10000000)
 

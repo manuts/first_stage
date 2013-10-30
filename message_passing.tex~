@@ -1,4 +1,4 @@
- \begin{figure}[scale=1.25]
+ \begin{figure}[scale=1]
  \centering
   \begin{tikzpicture}
   \begin{scope}

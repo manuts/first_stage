@@ -1,19 +1,16 @@
 \section{Outcomes and Results}
 
-Following classes and blocks were desingned as part of this project. These can be installed as an Out of Tree module in GNU Radio. The source can be downloaded from \cite{gr-ldpc}
-   \begin{itemize}
-    \item Class for GF$\left(2\right)$ Vector arithmetic.
-    \item Class for GF$\left(2\right)$ Matrix arithmetic.
-    \item Class for accessing LDPC codes in ``alist-file''\cite{alist} format.
-    \item Class for holding an LDPC code.
-    \item Class for message passing mechanisms for BSC and AWGN channels.
-    \item LDPC Encoder block.
-    \item LDPC Decoder blocks, for both float inputs and byte inputs.
-    \item Two algorithms for construction of LDPC codes
-   \end{itemize}
+GNU Radio blocks for LDPC encoder and decoder were designed as part of this project.
+These can be installed as an Out of Tree module in GNU Radio. The source can be downloaded from \cite{gr-ldpc}
 
-   Tables~\ref{tab:biter} and \ref{tab:blocker} compares the performance of these blocks with uncoded BPSK.
+   Tables~\ref{tab:biter} and \ref{tab:blocker} compares the performance of these blocks with uncoded BPSK. The plot of Bit error performance is in Figure~\ref{fig:berplot}
+   The GNU Radio set up used in this experiment is shown in Figure~\ref{fig:blocks}
    
+For the single user case with a (8000, 4000) code (rate 1/2), and when $\sigma = 0.8$ (capacity = 0.678) out of 100 blocks, all the blocks were decoded correctly.
+For the same code, when $\sigma = 0.85$ (capacity = 0.626) out of 100 blocks, 98 were decoded correctly. When $\sigma = 0.9$ (capacity = 0.579) none of the blocks
+were decoded correctly. In each case upto 100 message passing iterations were done.
+
+\input{rate_pair}
 \begin{table}
 \caption{Bit Error Rate Comparison}\label{tab:biter}
 \begin{center}
@@ -48,3 +45,17 @@ Following classes and blocks were desingned as part of this project. These can b
  \end{center}
  \caption*{The performance of an LDPC code generated using PEG with $N = 1008, K = 504,$ and $M = 504$}
 \end{table}
+
+  \begin{figure}
+  \centering
+   \includegraphics[scale = 0.5]{ber_plot.pdf}
+   \caption{BER plot corresponding to Table~\ref{tab:biter}}
+   \label{fig:berplot}
+  \end{figure}
+
+  \begin{figure}
+  \centering
+   \includegraphics[scale = 0.2]{ldpc.png}
+   \caption{GNU Radio block diagram} 
+   \label{fig:blocks}
+  \end{figure}
